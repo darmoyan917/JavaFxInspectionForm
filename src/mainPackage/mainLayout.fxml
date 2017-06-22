@@ -22,53 +22,53 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainPackage.mainController">
   <children>
-    <MenuBar prefHeight="10.0" prefWidth="873.0" VBox.vgrow="NEVER">
-      <menus>
-        <Menu mnemonicParsing="false" text="File">
-          <items>
-            <MenuItem mnemonicParsing="false" text="New" />
-            <MenuItem fx:id="openFileButton" mnemonicParsing="false" onAction="#openFileChooser" text="Open…" />
-            <Menu mnemonicParsing="false" text="Open Recent" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
-            <MenuItem mnemonicParsing="false" onAction="#saveFileChooser" text="Save" />
-            <MenuItem mnemonicParsing="false" onAction="#saveFileChooser" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Revert" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Undo" />
-            <MenuItem mnemonicParsing="false" text="Redo" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Cut" />
-            <MenuItem mnemonicParsing="false" text="Copy" />
-            <MenuItem mnemonicParsing="false" text="Paste" />
-            <MenuItem mnemonicParsing="false" text="Delete" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Select All" />
-            <MenuItem mnemonicParsing="false" text="Unselect All" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" onAction="#openAboutWindow" text="About" />
-          </items>
-        </Menu>
-            <Menu mnemonicParsing="false" text="Unspecified Menu">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-              </items>
-            </Menu>
-      </menus>
-    </MenuBar>
+      <HBox maxHeight="27.0" minHeight="25.0" prefHeight="25.0" prefWidth="1280.0" VBox.vgrow="ALWAYS">
+         <children>
+          <MenuBar prefHeight="10.0" HBox.hgrow="ALWAYS">
+            <menus>
+              <Menu mnemonicParsing="false" text="File">
+                <items>
+                  <MenuItem mnemonicParsing="false" text="New" />
+                  <MenuItem fx:id="openFileButton" mnemonicParsing="false" onAction="#openFileChooser" text="Open…" />
+                  <Menu mnemonicParsing="false" text="Open Recent" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Close" />
+                  <MenuItem mnemonicParsing="false" onAction="#saveFileChooser" text="Save" />
+                  <MenuItem mnemonicParsing="false" onAction="#saveFileChooser" text="Save As…" />
+                  <MenuItem mnemonicParsing="false" text="Revert" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Preferences…" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#exitButtonAction" text="Quit" />
+                </items>
+              </Menu>
+              <Menu mnemonicParsing="false" text="Edit">
+                <items>
+                  <MenuItem mnemonicParsing="false" text="Undo" />
+                  <MenuItem mnemonicParsing="false" text="Redo" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Cut" />
+                  <MenuItem mnemonicParsing="false" text="Copy" />
+                  <MenuItem mnemonicParsing="false" text="Paste" />
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Select All" />
+                  <MenuItem mnemonicParsing="false" text="Unselect All" />
+                </items>
+              </Menu>
+              <Menu mnemonicParsing="false" text="Help">
+                <items>
+                  <MenuItem mnemonicParsing="false" onAction="#openAboutWindow" text="About" />
+                </items>
+              </Menu>
+            </menus>
+          </MenuBar>
+         </children>
+      </HBox>
     <SplitPane dividerPositions="0.2505567928730512, 0.7505567928730512" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <items>
         <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="749.0" prefWidth="135.0" SplitPane.resizableWithParent="false">
@@ -96,16 +96,22 @@
                         <Blend />
                      </effect>
                   </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="170.0" minWidth="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="WorldPac" textAlignment="CENTER">
+                     <effect>
+                        <Blend />
+                     </effect>
+                  </Button>
           </children>
         </AnchorPane>
       <AnchorPane id="Content" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="749.0" prefWidth="720.0">
         <children>
           <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Vehicle Information" textAlignment="CENTER" textFill="$x2" wrapText="false" />
-                  <ChoiceBox layoutX="351.0" layoutY="57.0" prefWidth="150.0" />
-                  <ColorPicker layoutX="183.0" layoutY="57.0" prefHeight="25.0" prefWidth="149.0" />
-                  <DatePicker layoutX="529.0" layoutY="57.0" />
+                  <ChoiceBox layoutX="208.0" layoutY="57.0" prefHeight="25.0" prefWidth="164.0" />
+                  <ChoiceBox layoutX="381.0" layoutY="57.0" prefHeight="25.0" prefWidth="182.0" />
+                  <ColorPicker layoutX="92.0" layoutY="57.0" prefHeight="25.0" prefWidth="105.0" />
+                  <DatePicker layoutX="568.0" layoutY="57.0" prefHeight="25.0" prefWidth="135.0" />
                   <Separator layoutX="14.0" layoutY="205.0" prefHeight="3.0" prefWidth="689.0" />
-                  <TextField layoutX="14.0" layoutY="57.0" promptText="Year" />
+                  <TextField layoutX="14.0" layoutY="57.0" prefHeight="25.0" prefWidth="60.0" promptText="Year" />
                   <TextField layoutX="14.0" layoutY="104.0" prefHeight="25.0" prefWidth="236.0" promptText="Vin Number" />
                   <TextField layoutX="277.0" layoutY="104.0" promptText="Mileage" />
                   <Label alignment="CENTER" layoutX="14.0" layoutY="222.0" style="&#10;" text="Tire Measurements" textAlignment="CENTER" wrapText="false">
@@ -116,11 +122,66 @@
                         <Color blue="0.624" green="0.624" red="0.624" fx:id="x21" />
                      </textFill>
                   </Label>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="177.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="34.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/Tire_Inspection.jpg" />
                      </image>
                   </ImageView>
+                  <TextField layoutX="455.0" layoutY="104.0" prefHeight="25.0" prefWidth="248.0" promptText="Technician Name" />
+                  <TextField layoutX="307.0" layoutY="260.0" prefHeight="25.0" prefWidth="50.0" />
+                  <TextField layoutX="307.0" layoutY="310.0" prefHeight="25.0" prefWidth="50.0" />
+                  <TextField layoutX="568.0" layoutY="260.0" prefHeight="25.0" prefWidth="50.0" />
+                  <TextField layoutX="568.0" layoutY="310.0" prefHeight="25.0" prefWidth="50.0" />
+                  <Text layoutX="203.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Left Front Tire: " wrappingWidth="94.00001525878906">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="203.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Left Rear Tire: " wrappingWidth="94.00001525878906">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="450.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Right Front Tire: " wrappingWidth="104.99998092651367">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="450.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Right Rear Tire: " wrappingWidth="104.99998092651367">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="360.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/32nds" wrappingWidth="50.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="360.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/32nds" wrappingWidth="50.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="623.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/32nds" wrappingWidth="50.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="623.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/32nds" wrappingWidth="50.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Separator layoutX="427.0" layoutY="239.0" orientation="VERTICAL" prefHeight="124.0" prefWidth="4.0" />
+                  <Separator layoutX="14.0" layoutY="427.0" prefHeight="3.0" prefWidth="689.0" />
+                  <Label alignment="CENTER" layoutX="5.0" layoutY="444.0" style="&#10;" text="Drivetrain" textAlignment="CENTER" wrapText="false">
+                     <font>
+                        <Font size="18.0" fx:id="x111" />
+                     </font>
+                     <textFill>
+                        <Color blue="0.624" green="0.624" red="0.624" fx:id="x211" />
+                     </textFill>
+                  </Label>
         </children>
       </AnchorPane>
         <AnchorPane>
