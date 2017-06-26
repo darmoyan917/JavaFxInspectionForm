@@ -39,7 +39,7 @@
                   <MenuItem mnemonicParsing="false" text="Close" />
                   <MenuItem mnemonicParsing="false" onAction="#saveFileChooser" text="Save" />
                   <MenuItem mnemonicParsing="false" onAction="#saveFileChooser" text="Save As…" />
-                  <MenuItem mnemonicParsing="false" text="Revert" />
+                  <MenuItem mnemonicParsing="false" onAction="#printPage" text="Print" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" text="Preferences…" />
                   <SeparatorMenuItem mnemonicParsing="false" />
@@ -69,9 +69,9 @@
           </MenuBar>
          </children>
       </HBox>
-    <SplitPane dividerPositions="0.2505567928730512, 0.7505567928730512" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <SplitPane dividerPositions="0.107981220657277, 0.676056338028169" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <items>
-        <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="749.0" prefWidth="135.0" SplitPane.resizableWithParent="false">
+        <AnchorPane minWidth="-Infinity" prefHeight="749.0" prefWidth="135.0" SplitPane.resizableWithParent="false">
           <children>
             <Label alignment="CENTER" layoutX="37.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Task" textAlignment="CENTER" wrapText="false">
               <font>
@@ -86,31 +86,35 @@
                         <Blend />
                      </effect>
                   </Button>
-                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="98.0" minWidth="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="Inspection" textAlignment="CENTER">
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="104.0" minWidth="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="Inspection" textAlignment="CENTER">
                      <effect>
                         <Blend />
                      </effect>
                   </Button>
-                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="134.0" minWidth="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="Shop Info" textAlignment="CENTER">
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="146.0" minWidth="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="Shop Info" textAlignment="CENTER">
                      <effect>
                         <Blend />
                      </effect>
                   </Button>
-                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="170.0" minWidth="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="WorldPac" textAlignment="CENTER">
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="188.0" minWidth="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="WorldPac" textAlignment="CENTER">
                      <effect>
                         <Blend />
                      </effect>
                   </Button>
+                  <Separator layoutY="299.0" prefHeight="19.0" prefWidth="113.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                  <Separator layoutY="87.0" prefHeight="19.0" prefWidth="113.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="87.0" />
+                  <Separator layoutX="9.0" layoutY="129.0" prefHeight="19.0" prefWidth="113.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="130.0" />
+                  <Separator layoutX="9.0" layoutY="171.0" prefHeight="19.0" prefWidth="113.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="171.0" />
           </children>
         </AnchorPane>
-      <AnchorPane id="Content" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="749.0" prefWidth="720.0">
+      <AnchorPane id="Content" fx:id="middlePane" minWidth="-Infinity" prefHeight="749.0" prefWidth="720.0">
         <children>
           <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Vehicle Information" textAlignment="CENTER" textFill="$x2" wrapText="false" />
-                  <ChoiceBox layoutX="208.0" layoutY="57.0" prefHeight="25.0" prefWidth="164.0" />
-                  <ChoiceBox layoutX="381.0" layoutY="57.0" prefHeight="25.0" prefWidth="182.0" />
+                  <ChoiceBox fx:id="makeChoiceBox" layoutX="208.0" layoutY="57.0" onMouseClicked="#makeChoiceBoxActionEvent" prefHeight="25.0" prefWidth="164.0" />
+                  <ChoiceBox fx:id="modelChoiceBox" layoutX="381.0" layoutY="57.0" prefHeight="25.0" prefWidth="182.0" />
                   <ColorPicker layoutX="92.0" layoutY="57.0" prefHeight="25.0" prefWidth="105.0" />
                   <DatePicker layoutX="568.0" layoutY="57.0" prefHeight="25.0" prefWidth="135.0" />
-                  <Separator layoutX="14.0" layoutY="205.0" prefHeight="3.0" prefWidth="689.0" />
+                  <Separator layoutY="179.0" prefHeight="3.0" prefWidth="720.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="179.0" />
                   <TextField layoutX="14.0" layoutY="57.0" prefHeight="25.0" prefWidth="60.0" promptText="Year" />
                   <TextField layoutX="14.0" layoutY="104.0" prefHeight="25.0" prefWidth="236.0" promptText="Vin Number" />
                   <TextField layoutX="277.0" layoutY="104.0" promptText="Mileage" />
@@ -173,7 +177,7 @@
                      </font>
                   </Text>
                   <Separator layoutX="427.0" layoutY="239.0" orientation="VERTICAL" prefHeight="124.0" prefWidth="4.0" />
-                  <Separator layoutX="14.0" layoutY="427.0" prefHeight="3.0" prefWidth="689.0" />
+                  <Separator layoutX="14.0" layoutY="427.0" prefHeight="3.0" prefWidth="690.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                   <Label alignment="CENTER" layoutX="5.0" layoutY="444.0" style="&#10;" text="Drivetrain" textAlignment="CENTER" wrapText="false">
                      <font>
                         <Font size="18.0" fx:id="x111" />
@@ -193,7 +197,7 @@
     </SplitPane>
     <HBox id="HBox" alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="1184.0" spacing="5.0" VBox.vgrow="NEVER">
       <children>
-        <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="Left status" HBox.hgrow="ALWAYS">
+        <Label fx:id="leftStatusLabel" maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="Left status" HBox.hgrow="ALWAYS">
           <font>
             <Font size="11.0" fx:id="x3" />
           </font>
