@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.web.HTMLEditor?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1754.0" prefWidth="1240.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HTMLEditor htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" prefHeight="200.0" prefWidth="506.0" />
+      <AnchorPane fx:id="TopPane" prefHeight="871.0" prefWidth="1240.0">
+         <children>
+            <CheckBox layoutX="115.0" layoutY="323.0" mnemonicParsing="false" text="CheckBox" />
+            <ChoiceBox layoutX="317.0" layoutY="209.0" prefWidth="150.0" />
+            <ComboBox layoutX="345.0" layoutY="149.0" prefWidth="150.0" />
+            <DatePicker layoutX="506.0" layoutY="188.0" />
+         </children></AnchorPane>
+   </children>
+</VBox>

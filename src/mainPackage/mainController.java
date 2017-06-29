@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.transform.Scale;
@@ -20,12 +21,16 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+
 import java.io.IOException;
 
 
 public class mainController {
+    private static printPageController printController;
     private static ModelInterface modelDAO = null;
     public int selectedMakeIndex;
+    @FXML
+    private ToggleButton flateTireToggle;
     private Stage aboutStage = new Stage();
     @FXML
     private AnchorPane middlePane;
@@ -52,7 +57,6 @@ public class mainController {
                 selectedMakeIndex = (int) newValue;
                 setModelChoiceBox();
             }
-
 
         });
     }
@@ -98,8 +102,19 @@ public class mainController {
     }
 
     @FXML
-    private void printPage(){
-        Node node = middlePane;
+    private void printPage() throws Exception{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("printPageLayout.fxml"));
+        Parent root = loader.load();
+        Stage printStage = new Stage();
+        printStage.setScene(new Scene(root, 1200, 900));
+        // printStage.initStyle(StageStyle.UNDECORATED);
+        printStage.show();
+        printController = loader.getController();
+
+            printController.printNode();
+           //printStage.hide();
+    }
+    public void printPage(Node node){
         Printer printer = Printer.getDefaultPrinter();
         PageLayout pageLayout = printer.createPageLayout(Paper.A4, PageOrientation.PORTRAIT, Printer.MarginType.DEFAULT);
         double scaleX = pageLayout.getPrintableWidth() / node.getBoundsInParent().getWidth();
@@ -115,8 +130,9 @@ public class mainController {
                 }
             }
         }
-        node.getTransforms().add(new Scale(1.493,1.184));
+        // node.getTransforms().add(new Scale(1.493,1.184));
         leftStatusLabel.setText("Print Completed");
-        leftStatusLabel.setText("");
     }
+
+
 }

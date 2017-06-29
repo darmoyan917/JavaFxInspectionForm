@@ -9,66 +9,67 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainPackage.mainController">
+<VBox alignment="CENTER" minHeight="800.0" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainPackage.mainController">
   <children>
-      <HBox maxHeight="27.0" minHeight="25.0" prefHeight="25.0" prefWidth="1280.0" VBox.vgrow="ALWAYS">
-         <children>
-          <MenuBar prefHeight="10.0" HBox.hgrow="ALWAYS">
-            <menus>
-              <Menu mnemonicParsing="false" text="File">
-                <items>
-                  <MenuItem mnemonicParsing="false" text="New" />
-                  <MenuItem fx:id="openFileButton" mnemonicParsing="false" onAction="#openFileChooser" text="Open…" />
-                  <Menu mnemonicParsing="false" text="Open Recent" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Close" />
-                  <MenuItem mnemonicParsing="false" onAction="#saveFileChooser" text="Save" />
-                  <MenuItem mnemonicParsing="false" onAction="#saveFileChooser" text="Save As…" />
-                  <MenuItem mnemonicParsing="false" onAction="#printPage" text="Print" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Preferences…" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" onAction="#exitButtonAction" text="Quit" />
-                </items>
-              </Menu>
-              <Menu mnemonicParsing="false" text="Edit">
-                <items>
-                  <MenuItem mnemonicParsing="false" text="Undo" />
-                  <MenuItem mnemonicParsing="false" text="Redo" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Cut" />
-                  <MenuItem mnemonicParsing="false" text="Copy" />
-                  <MenuItem mnemonicParsing="false" text="Paste" />
-                  <MenuItem mnemonicParsing="false" text="Delete" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Select All" />
-                  <MenuItem mnemonicParsing="false" text="Unselect All" />
-                </items>
-              </Menu>
-              <Menu mnemonicParsing="false" text="Help">
-                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#openAboutWindow" text="About" />
-                </items>
-              </Menu>
-            </menus>
-          </MenuBar>
-         </children>
-      </HBox>
+    <MenuBar prefHeight="10.0" VBox.vgrow="ALWAYS">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="New" />
+            <MenuItem fx:id="openFileButton" mnemonicParsing="false" onAction="#openFileChooser" text="Open…" />
+            <Menu mnemonicParsing="false" text="Open Recent" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem mnemonicParsing="false" onAction="#saveFileChooser" text="Save" />
+            <MenuItem mnemonicParsing="false" onAction="#saveFileChooser" text="Save As…" />
+            <MenuItem mnemonicParsing="false" onAction="#printPage" text="Print" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" onAction="#exitButtonAction" text="Quit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Undo" />
+            <MenuItem mnemonicParsing="false" text="Redo" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Cut" />
+            <MenuItem mnemonicParsing="false" text="Copy" />
+            <MenuItem mnemonicParsing="false" text="Paste" />
+            <MenuItem mnemonicParsing="false" text="Delete" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Select All" />
+            <MenuItem mnemonicParsing="false" text="Unselect All" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#openAboutWindow" text="About" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
     <SplitPane dividerPositions="0.107981220657277, 0.676056338028169" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <items>
         <AnchorPane minWidth="-Infinity" prefHeight="749.0" prefWidth="135.0" SplitPane.resizableWithParent="false">
@@ -105,20 +106,48 @@
                   <Separator layoutY="87.0" prefHeight="19.0" prefWidth="113.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="87.0" />
                   <Separator layoutX="9.0" layoutY="129.0" prefHeight="19.0" prefWidth="113.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="130.0" />
                   <Separator layoutX="9.0" layoutY="171.0" prefHeight="19.0" prefWidth="113.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="171.0" />
+                  <Separator layoutX="-22.0" layoutY="535.0" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="-22.0" AnchorPane.rightAnchor="-43.0" AnchorPane.topAnchor="535.0" />
           </children>
         </AnchorPane>
       <AnchorPane id="Content" fx:id="middlePane" minWidth="-Infinity" prefHeight="749.0" prefWidth="720.0">
         <children>
           <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Vehicle Information" textAlignment="CENTER" textFill="$x2" wrapText="false" />
-                  <ChoiceBox fx:id="makeChoiceBox" layoutX="208.0" layoutY="57.0" onMouseClicked="#makeChoiceBoxActionEvent" prefHeight="25.0" prefWidth="164.0" />
-                  <ChoiceBox fx:id="modelChoiceBox" layoutX="381.0" layoutY="57.0" prefHeight="25.0" prefWidth="182.0" />
-                  <ColorPicker layoutX="92.0" layoutY="57.0" prefHeight="25.0" prefWidth="105.0" />
-                  <DatePicker layoutX="568.0" layoutY="57.0" prefHeight="25.0" prefWidth="135.0" />
+                  <GridPane hgap="12.0" layoutX="14.0" layoutY="57.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="12.0">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <ChoiceBox fx:id="makeChoiceBox" maxWidth="164.0" onMouseClicked="#makeChoiceBoxActionEvent" prefHeight="25.0" prefWidth="164.0" GridPane.columnIndex="2" />
+                        <ChoiceBox fx:id="modelChoiceBox" maxWidth="182.0" prefHeight="25.0" prefWidth="182.0" GridPane.columnIndex="3" />
+                        <ColorPicker maxHeight="105.0" prefHeight="25.0" prefWidth="105.0" GridPane.columnIndex="1" />
+                        <DatePicker maxWidth="135.0" prefHeight="25.0" prefWidth="135.0" GridPane.columnIndex="4" />
+                        <TextField maxWidth="60.0" prefHeight="25.0" prefWidth="60.0" promptText="Year" />
+                     </children>
+                  </GridPane>
                   <Separator layoutY="179.0" prefHeight="3.0" prefWidth="720.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="179.0" />
-                  <TextField layoutX="14.0" layoutY="57.0" prefHeight="25.0" prefWidth="60.0" promptText="Year" />
-                  <TextField layoutX="14.0" layoutY="104.0" prefHeight="25.0" prefWidth="236.0" promptText="Vin Number" />
-                  <TextField layoutX="277.0" layoutY="104.0" promptText="Mileage" />
-                  <Label alignment="CENTER" layoutX="14.0" layoutY="222.0" style="&#10;" text="Tire Measurements" textAlignment="CENTER" wrapText="false">
+                  <GridPane hgap="27.0" layoutX="14.0" layoutY="104.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="12.0">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <TextField maxWidth="236.0" prefHeight="25.0" prefWidth="236.0" promptText="Vin Number" snapToPixel="false" />
+                        <TextField maxWidth="156.0" prefWidth="156.0" promptText="Mileage" GridPane.columnIndex="1" />
+                        <TextField maxWidth="248.0" prefHeight="25.0" prefWidth="248.0" promptText="Technician Name" GridPane.columnIndex="2" />
+                     </children>
+                  </GridPane>
+                  <Label alignment="CENTER" layoutX="12.0" layoutY="190.0" style="&#10;" text="Tire Depth" textAlignment="CENTER" wrapText="false">
                      <font>
                         <Font size="18.0" fx:id="x11" />
                      </font>
@@ -126,59 +155,37 @@
                         <Color blue="0.624" green="0.624" red="0.624" fx:id="x21" />
                      </textFill>
                   </Label>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="34.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="93.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/Tire_Inspection.jpg" />
                      </image>
                   </ImageView>
-                  <TextField layoutX="455.0" layoutY="104.0" prefHeight="25.0" prefWidth="248.0" promptText="Technician Name" />
-                  <TextField layoutX="307.0" layoutY="260.0" prefHeight="25.0" prefWidth="50.0" />
-                  <TextField layoutX="307.0" layoutY="310.0" prefHeight="25.0" prefWidth="50.0" />
-                  <TextField layoutX="568.0" layoutY="260.0" prefHeight="25.0" prefWidth="50.0" />
-                  <TextField layoutX="568.0" layoutY="310.0" prefHeight="25.0" prefWidth="50.0" />
-                  <Text layoutX="203.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Left Front Tire: " wrappingWidth="94.00001525878906">
+                  <TextField alignment="CENTER" layoutX="12.0" layoutY="248.0" prefHeight="25.0" prefWidth="75.0" promptText="Left Front" />
+                  <TextField alignment="CENTER" layoutX="12.0" layoutY="318.0" prefHeight="25.0" prefWidth="75.0" promptText="Left Rear" />
+                  <TextField alignment="CENTER" layoutX="212.0" layoutY="248.0" prefHeight="25.0" prefWidth="75.0" promptText="Right Front" />
+                  <TextField alignment="CENTER" layoutX="212.0" layoutY="318.0" prefHeight="25.0" prefWidth="75.0" promptText="Right Rear" />
+                  <Text fill="#686868" layoutX="32.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/32nds" wrappingWidth="50.0">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text layoutX="203.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Left Rear Tire: " wrappingWidth="94.00001525878906">
+                  <Text fill="#686868" layoutX="30.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/32nds" wrappingWidth="50.0">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text layoutX="450.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Right Front Tire: " wrappingWidth="104.99998092651367">
+                  <Text fill="#686868" layoutX="228.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/32nds" wrappingWidth="50.0">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text layoutX="450.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Right Rear Tire: " wrappingWidth="104.99998092651367">
+                  <Text fill="#686868" layoutX="227.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/32nds" wrappingWidth="50.0">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text layoutX="360.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/32nds" wrappingWidth="50.0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="360.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/32nds" wrappingWidth="50.0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="623.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/32nds" wrappingWidth="50.0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="623.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/32nds" wrappingWidth="50.0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Text>
-                  <Separator layoutX="427.0" layoutY="239.0" orientation="VERTICAL" prefHeight="124.0" prefWidth="4.0" />
-                  <Separator layoutX="14.0" layoutY="427.0" prefHeight="3.0" prefWidth="690.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                  <Label alignment="CENTER" layoutX="5.0" layoutY="444.0" style="&#10;" text="Drivetrain" textAlignment="CENTER" wrapText="false">
+                  <Separator layoutY="452.0" prefHeight="3.0" prefWidth="690.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                  <Label alignment="CENTER" layoutX="15.0" layoutY="462.0" style="&#10;" text="Drivetrain" textAlignment="CENTER" wrapText="false">
                      <font>
                         <Font size="18.0" fx:id="x111" />
                      </font>
@@ -186,13 +193,55 @@
                         <Color blue="0.624" green="0.624" red="0.624" fx:id="x211" />
                      </textFill>
                   </Label>
+                  <TextField alignment="CENTER" layoutX="112.0" layoutY="390.0" prefHeight="25.0" prefWidth="75.0" promptText="Spare" />
+                  <Text fill="#686868" layoutX="129.0" layoutY="433.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/32nds" wrappingWidth="50.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Label alignment="CENTER" layoutX="565.0" layoutY="190.0" style="&#10;" text="Tire Pressure" textAlignment="CENTER" wrapText="false" AnchorPane.rightAnchor="12.0">
+                     <font>
+                        <Font size="18.0" fx:id="x112" />
+                     </font>
+                     <textFill>
+                        <Color blue="0.624" green="0.624" red="0.624" fx:id="x212" />
+                     </textFill>
+                  </Label>
+                  <Separator layoutX="12.0" layoutY="219.0" prefHeight="3.0" prefWidth="287.0" AnchorPane.leftAnchor="0.0" />
+                  <Separator layoutX="520.0" layoutY="218.0" prefWidth="287.0" AnchorPane.rightAnchor="0.0" />
+                  <Separator layoutX="369.0" layoutY="219.0" orientation="VERTICAL" prefHeight="206.0" prefWidth="3.0" AnchorPane.leftAnchor="369.0" AnchorPane.rightAnchor="345.0" />
+                  <TextField alignment="CENTER" layoutX="472.0" layoutY="248.0" prefHeight="25.0" prefWidth="75.0" promptText="Left Front" AnchorPane.rightAnchor="173.0" />
+                  <TextField alignment="CENTER" layoutX="472.0" layoutY="282.0" prefHeight="25.0" prefWidth="75.0" promptText="Right Front" AnchorPane.rightAnchor="173.0" />
+                  <TextField alignment="CENTER" layoutX="472.0" layoutY="316.0" prefHeight="25.0" prefWidth="75.0" promptText="Left Rear" AnchorPane.rightAnchor="173.0" />
+                  <TextField alignment="CENTER" layoutX="472.0" layoutY="350.0" prefHeight="25.0" prefWidth="75.0" promptText="Right Rear" AnchorPane.rightAnchor="173.0" />
+                  <TextField alignment="CENTER" layoutX="472.0" layoutY="384.0" prefHeight="25.0" prefWidth="75.0" promptText="Spare" AnchorPane.rightAnchor="173.0" />
+                  <Label layoutX="554.0" layoutY="251.0" text="PSI" textFill="#686868" AnchorPane.rightAnchor="149.0" />
+                  <Label layoutX="554.0" layoutY="285.0" text="PSI" textFill="#686868" AnchorPane.rightAnchor="149.0" />
+                  <Label layoutX="554.0" layoutY="319.0" text="PSI" textFill="#686868" AnchorPane.rightAnchor="149.0" />
+                  <Label layoutX="554.0" layoutY="353.0" text="PSI" textFill="#686868" AnchorPane.rightAnchor="149.0" />
+                  <Label layoutX="554.0" layoutY="387.0" text="PSI" textFill="#686868" AnchorPane.rightAnchor="149.0" />
+                  <Separator layoutX="470.0" layoutY="277.0" prefWidth="250.0" AnchorPane.rightAnchor="0.0" />
+                  <Separator layoutX="470.0" layoutY="311.0" prefWidth="250.0" AnchorPane.rightAnchor="0.0" />
+                  <Separator layoutX="480.0" layoutY="345.0" prefWidth="250.0" AnchorPane.rightAnchor="0.0" />
+                  <Separator layoutX="470.0" layoutY="379.0" prefWidth="250.0" AnchorPane.rightAnchor="0.0" />
+                  <ToggleButton fx:id="flateTireToggle" layoutX="606.0" layoutY="247.0" mnemonicParsing="false" prefWidth="90.0" stylesheets="@../StyleSheets/MainLayoutStyles.css" text="Flat Tire" AnchorPane.rightAnchor="25.0">
+                  </ToggleButton>
+                  <ToggleButton layoutX="606.0" layoutY="281.0" mnemonicParsing="false" prefWidth="90.0" stylesheets="@../StyleSheets/MainLayoutStyles.css" text="Flat Tire" AnchorPane.rightAnchor="25.0" />
+                  <ToggleButton layoutX="606.0" layoutY="316.0" mnemonicParsing="false" prefWidth="90.0" stylesheets="@../StyleSheets/MainLayoutStyles.css" text="Flat Tire" AnchorPane.rightAnchor="25.0" />
+                  <ToggleButton layoutX="606.0" layoutY="349.0" mnemonicParsing="false" prefWidth="90.0" stylesheets="@../StyleSheets/MainLayoutStyles.css" text="Flat Tire" AnchorPane.rightAnchor="25.0" />
+                  <ToggleButton layoutX="606.0" layoutY="383.0" mnemonicParsing="false" prefWidth="90.0" stylesheets="@../StyleSheets/MainLayoutStyles.css" text="Flat Tire" AnchorPane.rightAnchor="25.0" />
+                  <Separator layoutY="42.0" prefHeight="3.0" prefWidth="287.0" AnchorPane.leftAnchor="0.0" />
         </children>
       </AnchorPane>
-        <AnchorPane>
-          <children>
-            <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="$x2" wrapText="false" />
-          </children>
-        </AnchorPane>
+            <ScrollPane minViewportHeight="700.0" pannable="true" prefHeight="708.0" prefWidth="411.0" vbarPolicy="ALWAYS" vmax="10.0" vmin="1.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="55.0" prefWidth="85.0">
+                     <children>
+                  <Label alignment="CENTER" font="$x1" layoutX="15.0" layoutY="17.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="$x2" wrapText="false" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
       </items>
     </SplitPane>
     <HBox id="HBox" alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="1184.0" spacing="5.0" VBox.vgrow="NEVER">

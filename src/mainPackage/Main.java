@@ -22,6 +22,7 @@ public class Main extends Application {
         primaryStage.show();
         controller = loader.getController();
         controller.setMakeChoiceBox();
+
     }
 
     public static void main(String[] args) {
