@@ -13,7 +13,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.transform.Scale;
@@ -22,16 +21,20 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class mainController {
     private static printPageController printController;
     private static ModelInterface modelDAO = null;
+    private List<Node> InspectionmiddlePaneContent = new ArrayList<>();
+    private List<Node> CustomermiddlePaneContent = new ArrayList<>();
+    private AnchorPane printAnchorPane = new AnchorPane();
     public int selectedMakeIndex;
-    @FXML
-    private ToggleButton flateTireToggle;
     private Stage aboutStage = new Stage();
+    private Stage printStage = new Stage();
     @FXML
     private AnchorPane middlePane;
     @FXML
@@ -57,8 +60,30 @@ public class mainController {
                 selectedMakeIndex = (int) newValue;
                 setModelChoiceBox();
             }
-
         });
+    }
+    public void setMiddlePaneContent(List<Node> node){
+        CustomermiddlePaneContent = node;
+    }
+
+    @FXML
+    private void setCustomerToMiddlePane(){
+        if(!middlePane.getChildren().isEmpty()) {
+            if(!middlePane.getChildren().equals(CustomermiddlePaneContent)) {
+                InspectionmiddlePaneContent.clear();
+                InspectionmiddlePaneContent.addAll(middlePane.getChildren());
+            }
+            middlePane.getChildren().clear();
+            middlePane.getChildren().addAll(CustomermiddlePaneContent);
+        }
+    }
+    @FXML
+    private void setInspectionToMiddlePane(){
+        if(middlePane.getChildren().equals(CustomermiddlePaneContent)) {
+            middlePane.getChildren().clear();
+            middlePane.getChildren().addAll(InspectionmiddlePaneContent);
+            middlePane.setVisible(true);
+        }
     }
 
     private void setModelChoiceBox(){
@@ -103,23 +128,21 @@ public class mainController {
 
     @FXML
     private void printPage() throws Exception{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("printPageLayout.fxml"));
-        Parent root = loader.load();
-        Stage printStage = new Stage();
-        printStage.setScene(new Scene(root, 1200, 900));
-        // printStage.initStyle(StageStyle.UNDECORATED);
+        FXMLLoader printLoader = new FXMLLoader(getClass().getResource("printPageLayout.fxml"));
+        Parent root = printLoader.load();
+        printController = printLoader.getController();
+        printStage.setScene(new Scene(root, 1000, 800));
         printStage.show();
-        printController = loader.getController();
+        printAnchorPane = printController.getNode();
+        printPage(printAnchorPane);
 
-            printController.printNode();
-           //printStage.hide();
     }
     public void printPage(Node node){
         Printer printer = Printer.getDefaultPrinter();
         PageLayout pageLayout = printer.createPageLayout(Paper.A4, PageOrientation.PORTRAIT, Printer.MarginType.DEFAULT);
         double scaleX = pageLayout.getPrintableWidth() / node.getBoundsInParent().getWidth();
         double scaleY = pageLayout.getPrintableHeight() / node.getBoundsInParent().getHeight();
-        node.getTransforms().add(new Scale(scaleX,scaleY));
+        node.getTransforms().add(new Scale(scaleX, scaleY));
         PrinterJob job = PrinterJob.createPrinterJob();
         if (job != null) {
             boolean print = job.showPrintDialog(leftStatusLabel.getScene().getWindow());
@@ -130,9 +153,13 @@ public class mainController {
                 }
             }
         }
-        // node.getTransforms().add(new Scale(1.493,1.184));
+
+        printStage.hide();
         leftStatusLabel.setText("Print Completed");
     }
+    @FXML
+    private void runWorldpac() {
+        Thread t1 = new Thread(new runWorldpac());
 
-
-}
+    }
+    }
