@@ -1,4 +1,4 @@
-package mainPackage;
+package Model;
 
 public interface ModelInterface
 {

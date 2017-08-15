@@ -1,14 +1,17 @@
-package mainPackage;
+package Model;
 
+import Controller.CustomerController;
+import Controller.mainController;
+import Controller.printPageController;
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +25,8 @@ public class Main extends Application {
     public List<Node> printAnchorPane = new ArrayList<>();
     @Override
     public void start(Stage primaryStage) throws Exception{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("mainLayout.fxml"));
-        FXMLLoader custLoader = new FXMLLoader(getClass().getResource("CustomerLayout.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/mainLayout.fxml"));
+        FXMLLoader custLoader = new FXMLLoader(getClass().getResource("../View/CustomerLayout.fxml"));
         Parent root = loader.load();
         custLoader.load();
 
@@ -36,7 +39,7 @@ public class Main extends Application {
         custContoller = custLoader.getController();
         middlePaneContent = custContoller.getmiddlePane();
         controller.setMiddlePaneContent(middlePaneContent);
-
+        controller.setChangeListeners();
     }
 
     public static void main(String[] args) {
