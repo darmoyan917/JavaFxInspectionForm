@@ -29,66 +29,40 @@ import static javafx.scene.paint.Color.*;
 
 public class mainController {
     //................................................Variable Delcaration...................................................
-    private static printPageController printController;
-    private static ModelInterface modelDAO = null;
-    public int selectedMakeIndex;
+        private static printPageController printController;
+        private static ModelInterface modelDAO = null;
+        public int selectedMakeIndex;
     private List<Node> InspectionmiddlePaneContent = new ArrayList<>();
     private List<Node> CustomermiddlePaneContent = new ArrayList<>();
         private Stage aboutStage = new Stage();
         private Stage printStage = new Stage();
-    @FXML
-    private AnchorPane middlePane;
     private AnchorPane printAnchorPane = new AnchorPane();
-    @FXML
-    private SplitPane splitPane;
-        @FXML
-        private ChoiceBox<String> makeChoiceBox;
-        @FXML
-        private ChoiceBox<String> modelChoiceBox;
-    @FXML
-    private TextField oilConditionText;
-    @FXML
-    private TextField transFluidText;
-    @FXML
-    private TextField airFilterText;
-    @FXML
-    private TextField beltsText;
-    @FXML
-    private TextArea drivetrainTextArea;
-        @FXML
-        private ToggleButton oilConditionBad;
-        @FXML
-        private ToggleButton airFilterBad;
-        @FXML
-        private ToggleButton beltsBad;
-        @FXML
-        private ToggleButton transFluidBad;
-        @FXML
-        private ToggleButton goodToggle;
-    @FXML
-    private Slider valveCoverSlider;
-    @FXML
-    private Slider oilPanSlider;
-    @FXML
-    private Slider timingCoverSlider;
-    @FXML
-    private Slider filterHousingSlider;
-    @FXML
-    private Slider oilCoolerSlider;
-        @FXML
-        private Label valveCoverLabel;
-        @FXML
-        private Label leftStatusLabel;
-        @FXML
-        private Label oilPanLabel;
-        @FXML
-        private Label timingCoverLabel;
-        @FXML
-        private Label filterHousingLabel;
-        @FXML
-        private Label oilCoolerLabel;
-        @FXML
-        private Label upperDetailsLabel;
+    @FXML private AnchorPane middlePane;
+    @FXML private SplitPane splitPane;
+        @FXML private ChoiceBox<String> makeChoiceBox;
+        @FXML private ChoiceBox<String> modelChoiceBox;
+    @FXML private TextField oilConditionText;
+    @FXML private TextField transFluidText;
+    @FXML private TextField airFilterText;
+    @FXML private TextField beltsText;
+    @FXML private TextArea drivetrainTextArea;
+        @FXML private ToggleButton oilConditionBad;
+        @FXML private ToggleButton airFilterBad;
+        @FXML private ToggleButton beltsBad;
+        @FXML private ToggleButton transFluidBad;
+        @FXML private ToggleButton goodToggle;
+    @FXML private Slider valveCoverSlider;
+    @FXML private Slider oilPanSlider;
+    @FXML private Slider timingCoverSlider;
+    @FXML private Slider filterHousingSlider;
+    @FXML private Slider oilCoolerSlider;
+        @FXML private Label valveCoverLabel;
+        @FXML private Label leftStatusLabel;
+        @FXML private Label oilPanLabel;
+        @FXML private Label timingCoverLabel;
+        @FXML private Label filterHousingLabel;
+        @FXML private Label oilCoolerLabel;
+        @FXML private Label upperDetailsLabel;
 
     ObservableList<String> make = observableArrayList("", "ACURA", "ASTON MARTIN" ,"AUDI" ,"BENTLEY" ,"BMW" ,"BUGATTI" ,"BUICK" ,"CADILLAC" ,
             "CHEVROLET" ,"CHRYSLER" ,"DODGE","FERRARI" ,"FIAT" , "FORD" ,"GMC","HONDA" ,"HYUNDAI" ,"INFINITI" ,"ISUZU" ,"JAGUAR" ,"JEEP" ,"KIA" ,
@@ -97,36 +71,28 @@ public class mainController {
             "SCION" ,"SHELBY" ,"SMART CARS" ,"SUBARU" ,"SUZUKI" ,"TESLA", "TOYOTA" ,"VOLKSWAGEN" ,"VOLVO" );
 
     //............................Upper Details label text..............................................
-    @FXML
-    private void setUpperDetailsLabelYear(){
+    @FXML private void setUpperDetailsLabelYear(){
         upperDetailsLabel.setText("Enter the vehicle year");
     }
-    @FXML
-    private void setUpperDetailsLabelColor(){
+    @FXML private void setUpperDetailsLabelColor(){
         upperDetailsLabel.setText("Select the Color");
     }
-    @FXML
-    private void setUpperDetailsLabelMake(){
+    @FXML private void setUpperDetailsLabelMake(){
         upperDetailsLabel.setText("Select the manufacturer of the vehicle");
     }
-    @FXML
-    private void setUpperDetailsLabelModel(){
+    @FXML private void setUpperDetailsLabelModel(){
         upperDetailsLabel.setText("Select vehicle model from the drop down menu");
     }
-    @FXML
-    private void setUpperDetailsLabelDate(){
+    @FXML private void setUpperDetailsLabelDate(){
         upperDetailsLabel.setText("Select the inspection date");
     }
-    @FXML
-    private void setUpperDetailsLabelVin(){
+    @FXML private void setUpperDetailsLabelVin(){
         upperDetailsLabel.setText("Enter a valid 17 digit VIN number");
     }
-    @FXML
-    private void setUpperDetailsLabelMileage(){
+    @FXML private void setUpperDetailsLabelMileage(){
         upperDetailsLabel.setText("Enter vehicle's current mileage");
     }
-    @FXML
-    private void setUpperDetailsLabelTechnician(){
+    @FXML private void setUpperDetailsLabelTechnician(){
         upperDetailsLabel.setText("Enter your name");
     }
 
@@ -156,24 +122,19 @@ public class mainController {
     }
 
     //..............................DRIVETRAIN....AND....OIL LEAKS...................................
-    @FXML
-    private void setOilConditionBad(){
+    @FXML private void setOilConditionBad(){
         setBadToggle(oilConditionBad,oilConditionText, goodToggle);
     }
-    @FXML
-    private void setAirFilterBad(){
+    @FXML private void setAirFilterBad(){
         setBadToggle(airFilterBad,airFilterText, goodToggle);
     }
-    @FXML
-    private void setBeltsBad(){
+    @FXML private void setBeltsBad(){
         setBadToggle(beltsBad,beltsText, goodToggle);
     }
-    @FXML
-    private void setTransFluidBad(){
+    @FXML private void setTransFluidBad(){
         setBadToggle(transFluidBad,transFluidText,goodToggle);
     }
-    @FXML
-    private void setBadToggle(ToggleButton button, TextField text,ToggleButton goodButton){
+    @FXML private void setBadToggle(ToggleButton button, TextField text,ToggleButton goodButton){
         if (button.isSelected()){
             text.setVisible(true);
         }
@@ -184,24 +145,19 @@ public class mainController {
             text.setVisible(false);
         }
     }
-    @FXML
-    private void setValveCoverSlider(){
+    @FXML private void setValveCoverSlider(){
         setOilLeaks(valveCoverSlider,valveCoverLabel);
     }
-    @FXML
-    private void setOilPanSlider(){
+    @FXML private void setOilPanSlider(){
         setOilLeaks(oilPanSlider, oilPanLabel);
     }
-    @FXML
-    private void setTimingCoverSlider(){
+    @FXML private void setTimingCoverSlider(){
         setOilLeaks(timingCoverSlider,timingCoverLabel);
     }
-    @FXML
-    private void setFilterHousingSlider(){
+    @FXML private void setFilterHousingSlider(){
         setOilLeaks(filterHousingSlider,filterHousingLabel);
     }
-    @FXML
-    private void setOilCoolerSlider(){
+    @FXML private void setOilCoolerSlider(){
         setOilLeaks(oilCoolerSlider,oilCoolerLabel);
     }
     private void setOilLeaks(Slider oilLeakSlider, Label oilLeakLabel){
@@ -222,8 +178,7 @@ public class mainController {
             oilLeakLabel.setText(" None");
         }
     }
-    @FXML
-    public void showDrivetrainComments(){
+    @FXML public void showDrivetrainComments(){
         if(middlePane.getWidth() > 1095){
             drivetrainTextArea.setVisible(true);
         }
@@ -241,8 +196,7 @@ public class mainController {
         CustomermiddlePaneContent = node;
     }
 
-    @FXML
-    private void setCustomerToMiddlePane(){
+    @FXML private void setCustomerToMiddlePane(){
         if(!middlePane.getChildren().isEmpty()) {
             if(!middlePane.getChildren().equals(CustomermiddlePaneContent)) {
                 InspectionmiddlePaneContent.clear();
@@ -252,8 +206,7 @@ public class mainController {
             middlePane.getChildren().addAll(CustomermiddlePaneContent);
         }
     }
-    @FXML
-    private void setInspectionToMiddlePane(){
+    @FXML private void setInspectionToMiddlePane(){
         if(middlePane.getChildren().equals(CustomermiddlePaneContent)) {
             middlePane.getChildren().clear();
             middlePane.getChildren().addAll(InspectionmiddlePaneContent);
@@ -261,8 +214,7 @@ public class mainController {
         }
     }
     
-    @FXML
-    private void setModelChoiceBox(){
+    @FXML private void setModelChoiceBox(){
         if(selectedMakeIndex > 0) {
             String selectedMake = make.get(selectedMakeIndex);
             modelDAO = InterfaceFactory.getModelDAO(selectedMake);
@@ -276,24 +228,20 @@ public class mainController {
         }
     }
 
-    @FXML
-    private void exitButtonAction() {
+    @FXML private void exitButtonAction() {
         Platform.exit();
     }
-    @FXML
-    private void openFileChooser(){
+    @FXML private void openFileChooser(){
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open File");
         fileChooser.showOpenDialog(leftStatusLabel.getScene().getWindow());
     }
-    @FXML
-    private void saveFileChooser(){
+    @FXML private void saveFileChooser(){
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save File");
         fileChooser.showSaveDialog(leftStatusLabel.getScene().getWindow());
     }
-    @FXML
-    private void openAboutWindow (){
+    @FXML private void openAboutWindow (){
         try{
             Parent root = FXMLLoader.load(getClass().getResource("../View/aboutLayout.fxml"));
             aboutStage.setScene(new Scene(root, 600, 400));
@@ -305,8 +253,7 @@ public class mainController {
         }
     }
 
-    @FXML
-    private void printPage() throws Exception{
+    @FXML private void printPage() throws Exception{
         FXMLLoader printLoader = new FXMLLoader(getClass().getResource("../View/printPageLayout.fxml"));
         Parent root = printLoader.load();
         printController = printLoader.getController();
@@ -336,14 +283,12 @@ public class mainController {
         printStage.hide();
         leftStatusLabel.setText("Print Completed");
     }
-    @FXML
-    private void runWorldpac() {
+    @FXML private void runWorldpac() {
         Thread t1 = new Thread(new runWorldpac());
 
     }
     ObservableList<vehicles> empList = FXCollections.observableArrayList();
-    @FXML
-    private void connectDB(){
+    @FXML private void connectDB(){
         DBUtil util = new DBUtil();
         try {
             empList = dbConnect();
@@ -354,5 +299,4 @@ public class mainController {
         }
     }
 
-
-    }
+}
