@@ -138,40 +138,44 @@
                      </children>
                   </GridPane>
           <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Vehicle Information" textAlignment="CENTER" textFill="$x2" wrapText="false" />
-                  <GridPane hgap="12.0" layoutX="14.0" layoutY="57.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="12.0">
-                     <columnConstraints>
-                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
+                  <AnchorPane fx:id="upperAnchor" focusTraversable="true" layoutX="-2.0" layoutY="67.0" maxHeight="-Infinity" onMouseClicked="#setUpperDetailsLabelDefault" prefHeight="150.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
-                        <ChoiceBox fx:id="makeChoiceBox" maxWidth="164.0" onMouseClicked="#setUpperDetailsLabelMake" prefHeight="25.0" prefWidth="164.0" GridPane.columnIndex="2" />
-                        <ChoiceBox fx:id="modelChoiceBox" maxWidth="182.0" onMouseClicked="#setUpperDetailsLabelModel" prefHeight="25.0" prefWidth="182.0" GridPane.columnIndex="3" />
-                        <ColorPicker maxHeight="105.0" onMouseClicked="#setUpperDetailsLabelColor" prefHeight="25.0" prefWidth="105.0" GridPane.columnIndex="1" />
-                        <DatePicker maxWidth="135.0" onMouseClicked="#setUpperDetailsLabelDate" prefHeight="25.0" prefWidth="135.0" GridPane.columnIndex="4" />
-                        <TextField maxWidth="60.0" onMouseClicked="#setUpperDetailsLabelYear" prefHeight="25.0" prefWidth="60.0" promptText="Year" />
+                        <GridPane alignment="TOP_CENTER" hgap="12.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0">
+                           <columnConstraints>
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <ChoiceBox fx:id="makeChoiceBox" maxWidth="164.0" onMouseClicked="#setUpperDetailsLabelMake" prefHeight="25.0" prefWidth="164.0" GridPane.columnIndex="2" />
+                              <ChoiceBox fx:id="modelChoiceBox" maxWidth="182.0" onMouseClicked="#setUpperDetailsLabelModel" prefHeight="25.0" prefWidth="182.0" GridPane.columnIndex="3" />
+                              <ColorPicker fx:id="colorPick" maxHeight="105.0" onMouseClicked="#setUpperDetailsLabelColor" prefHeight="25.0" prefWidth="105.0" GridPane.columnIndex="1" />
+                              <DatePicker maxWidth="135.0" onMouseClicked="#setUpperDetailsLabelDate" prefHeight="25.0" prefWidth="135.0" GridPane.columnIndex="4" />
+                              <TextField fx:id="yearText" maxWidth="60.0" onMouseClicked="#setUpperDetailsLabelYear" prefHeight="25.0" prefWidth="60.0" promptText="Year" />
+                           </children>
+                        </GridPane>
+                        <GridPane alignment="CENTER" hgap="27.0" layoutY="47.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0">
+                           <columnConstraints>
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <TextField fx:id="vinText" maxWidth="236.0" onMouseClicked="#setUpperDetailsLabelVin" prefHeight="25.0" prefWidth="236.0" promptText="Vin Number" snapToPixel="false" />
+                              <TextField fx:id="mileageText" maxWidth="156.0" onMouseClicked="#setUpperDetailsLabelMileage" prefWidth="156.0" promptText="Mileage" GridPane.columnIndex="1" />
+                              <TextField fx:id="technicianText" maxWidth="248.0" onMouseClicked="#setUpperDetailsLabelTechnician" prefHeight="25.0" prefWidth="248.0" promptText="Technician Name" GridPane.columnIndex="2" />
+                           </children>
+                        </GridPane>
                      </children>
-                  </GridPane>
-                  <GridPane hgap="27.0" layoutX="14.0" layoutY="104.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="12.0">
-                     <columnConstraints>
-                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                     <children>
-                        <TextField maxWidth="236.0" onMouseClicked="#setUpperDetailsLabelVin" prefHeight="25.0" prefWidth="236.0" promptText="Vin Number" snapToPixel="false" />
-                        <TextField maxWidth="156.0" onMouseClicked="#setUpperDetailsLabelMileage" prefWidth="156.0" promptText="Mileage" GridPane.columnIndex="1" />
-                        <TextField maxWidth="248.0" onMouseClicked="#setUpperDetailsLabelTechnician" prefHeight="25.0" prefWidth="248.0" promptText="Technician Name" GridPane.columnIndex="2" />
-                     </children>
-                  </GridPane>
+                  </AnchorPane>
                   <Label alignment="CENTER" layoutX="12.0" layoutY="190.0" style="&#10;" text="Tire Depth" textAlignment="CENTER" wrapText="false">
                      <font>
                         <Font size="18.0" fx:id="x11" />
@@ -407,7 +411,7 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="55.0" prefWidth="85.0">
                <children>
             <Label alignment="CENTER" font="$x1" layoutX="15.0" layoutY="17.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="$x2" wrapText="false" />
-                  <Label fx:id="upperDetailsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="16.0" layoutY="62.0" prefHeight="150.0" prefWidth="315.0" text="Select one on the options to the left in order to get more details about it." textAlignment="CENTER" textFill="#838080" wrapText="true" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="50.0">
+                  <Label fx:id="upperDetailsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="16.0" layoutY="62.0" prefHeight="150.0" prefWidth="315.0" text="Select one of the options to the left in order to get more details about it." textAlignment="CENTER" textFill="#838080" wrapText="true" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="50.0">
                      <font>
                         <Font name="System Italic" size="15.0" />
                      </font>

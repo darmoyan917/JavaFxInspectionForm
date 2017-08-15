@@ -38,6 +38,7 @@ public class mainController {
         private Stage printStage = new Stage();
     private AnchorPane printAnchorPane = new AnchorPane();
     @FXML private AnchorPane middlePane;
+    @FXML private AnchorPane upperAnchor;
     @FXML private SplitPane splitPane;
         @FXML private ChoiceBox<String> makeChoiceBox;
         @FXML private ChoiceBox<String> modelChoiceBox;
@@ -95,6 +96,9 @@ public class mainController {
     @FXML private void setUpperDetailsLabelTechnician(){
         upperDetailsLabel.setText("Enter your name");
     }
+    @FXML private void setUpperDetailsLabelDefault(){
+        upperDetailsLabel.setText("Select one of the options to the left in order to get more details about it.")
+        ;}
 
     // .............................CHANGE LISTENERS......................................................
     public void setChangeListeners(){
@@ -227,7 +231,6 @@ public class mainController {
             this.modelChoiceBox.getItems().removeAll();
         }
     }
-
     @FXML private void exitButtonAction() {
         Platform.exit();
     }
@@ -252,7 +255,6 @@ public class mainController {
         }catch (IOException e){
         }
     }
-
     @FXML private void printPage() throws Exception{
         FXMLLoader printLoader = new FXMLLoader(getClass().getResource("../View/printPageLayout.fxml"));
         Parent root = printLoader.load();
