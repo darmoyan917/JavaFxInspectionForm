@@ -22,7 +22,7 @@ public class CustomerController {
     @FXML
     private AnchorPane customerMiddlePane;
     @FXML
-    private TableColumn<vehicles, Integer> vin;
+    private TableColumn<vehicles, String> vin;
     @FXML
     private TableColumn<vehicles, Integer> year;
     @FXML
@@ -32,13 +32,28 @@ public class CustomerController {
     @FXML
     private TableColumn<vehicles, String> bodyType;
     @FXML
-    private TableColumn<vehicles, String> color;
+    private TableColumn<vehicles, String> mileage;
+    @FXML
+    private TableColumn<vehicles, String> date;
 
     public List<Node> middlePaneContent = new ArrayList<>();
 
     public List<Node> getmiddlePane(){
         middlePaneContent.addAll(customerMiddlePane.getChildren());
         return  middlePaneContent;
+    }
+    //Search all employees
+    @FXML
+    private void searchEmployees(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        try {
+            //Get all Employees information
+            ObservableList<vehicles> empData = vehiclesDAO.searchVehicles();
+            //Populate Employees on TableView
+            populateEmployees(empData);
+        } catch (SQLException e){
+            System.out.println("Error occurred while getting employees information from DB.\n" + e);
+            throw e;
+        }
     }
 
     @FXML
@@ -53,12 +68,20 @@ public class CustomerController {
         When you want to use IntegerProperty or DoubleProperty, the setCellValueFactory(...)
         must have an additional asObject():
         */
-        vin.setCellValueFactory(cellData -> cellData.getValue().vehidleidProperty().asObject());
+        vin.setCellValueFactory(cellData -> cellData.getValue().vehidleidProperty());
         year.setCellValueFactory(cellData -> cellData.getValue().yearProperty().asObject());
         make.setCellValueFactory(cellData -> cellData.getValue().makeProperty());
         model.setCellValueFactory(cellData -> cellData.getValue().modelProperty());
         bodyType.setCellValueFactory(cellData -> cellData.getValue().bodyTypeProperty());
-        color.setCellValueFactory(cellData -> cellData.getValue().colorProperty());
+        mileage.setCellValueFactory(cellData -> cellData.getValue().mileageProperty());
+        date.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
+
+    }
+    //Populate Employees for TableView
+    @FXML
+    private void populateEmployees (ObservableList<vehicles> empData) throws ClassNotFoundException {
+        //Set items to the employeeTable
+        vehiclesTable.setItems(empData);
     }
 
 }

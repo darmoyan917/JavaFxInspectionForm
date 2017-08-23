@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class printPageController {
@@ -15,10 +16,12 @@ public class printPageController {
     public AnchorPane printPane;
 
 
-
-    public AnchorPane getNode(){
+    public AnchorPane setTopPane(Collection<? extends Node> middlepane){
+        TopPane.getChildren().clear();
+        TopPane.getChildren().addAll(middlepane);
         printPane = TopPane;
         return printPane;
+
     }
 
 }

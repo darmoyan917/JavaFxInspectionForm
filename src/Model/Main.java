@@ -3,6 +3,7 @@ package Model;
 import Controller.CustomerController;
 import Controller.mainController;
 import Controller.printPageController;
+import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -12,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +42,15 @@ public class Main extends Application {
         middlePaneContent = custContoller.getmiddlePane();
         controller.setMiddlePaneContent(middlePaneContent);
         controller.setChangeListeners();
+        PauseTransition pause = new PauseTransition(Duration.seconds(0.2));
+        primaryStage.maximizedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> ov, Boolean t, Boolean t1) {
+                if(t1)
+                    pause.setOnFinished(event -> controller.showDrivetrainComments());
+                    pause.playFromStart();
+            }
+        });
     }
 
     public static void main(String[] args) {

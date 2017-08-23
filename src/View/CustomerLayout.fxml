@@ -119,13 +119,14 @@
                   <Separator layoutX="12.0" layoutY="153.0" prefWidth="200.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" />
                   <HBox alignment="CENTER" layoutX="25.0" layoutY="436.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
                      <children>
-                        <TableView fx:id="vehicles" maxWidth="1050.0" minWidth="750.0" prefHeight="200.0" prefWidth="750.0" HBox.hgrow="ALWAYS">
+                        <TableView fx:id="vehiclesTable" maxWidth="1050.0" minWidth="750.0" prefHeight="200.0" prefWidth="750.0" HBox.hgrow="ALWAYS">
                           <columns>
                             <TableColumn fx:id="year" maxWidth="120.0" minWidth="60.0" prefWidth="75.0" text="Year" />
                             <TableColumn fx:id="make" maxWidth="190.0" minWidth="100.0" prefWidth="120.0" text="Make" />
                               <TableColumn fx:id="model" maxWidth="190.0" minWidth="100.0" prefWidth="130.0" sortable="false" text="Model" />
                               <TableColumn fx:id="bodyType" maxWidth="170.0" minWidth="100.0" prefWidth="100.0" sortable="false" text="Body Type" />
-                              <TableColumn fx:id="color" maxWidth="160.0" minWidth="60.0" prefWidth="75.0" text="Color" />
+                              <TableColumn fx:id="mileage" maxWidth="160.0" minWidth="60.0" prefWidth="75.0" text="mileage" />
+                              <TableColumn fx:id="date" prefWidth="75.0" text="date" />
                               <TableColumn fx:id="vin" maxWidth="350.0" minWidth="250.0" prefWidth="250.0" sortable="false" text="Vin Number" />
                           </columns>
                            <columnResizePolicy>
@@ -134,7 +135,7 @@
                         </TableView>
                      </children>
                   </HBox>
-                  <Button layoutX="35.0" layoutY="376.0" mnemonicParsing="false" onAction="#initialize" text="Button" />
+                  <Button layoutX="35.0" layoutY="376.0" mnemonicParsing="false" onAction="#searchEmployees" text="Button" />
                   <Label alignment="CENTER" layoutX="14.0" layoutY="332.0" style="&#10;" text="Customer Vehicles" textAlignment="CENTER" wrapText="false">
                      <font>
                         <Font size="18.0" fx:id="x11" />

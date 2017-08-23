@@ -4,33 +4,35 @@ import javafx.beans.property.*;
 
 public class vehicles {
         //Declare vehicles Table Columns
-        private IntegerProperty vehicle_id;
+        private StringProperty vehicle_id;
         private StringProperty make;
         private StringProperty model;
         private StringProperty bodyType;
-        private StringProperty color;
+        private StringProperty mileage;
         private IntegerProperty year;
+        private StringProperty date;
 
         //Constructor
         public vehicles() {
-            this.vehicle_id = new SimpleIntegerProperty();
+            this.vehicle_id = new SimpleStringProperty();
             this.make = new SimpleStringProperty();
             this.model = new SimpleStringProperty();
             this.bodyType = new SimpleStringProperty();
-            this.color = new SimpleStringProperty();
+            this.mileage = new SimpleStringProperty();
             this.year = new SimpleIntegerProperty();
+            this.date = new SimpleStringProperty();
         }
 
         //vehicle_id
-        public int getvehicle_id() {
+        public String getvehicle_id() {
             return vehicle_id.get();
         }
 
-        public void setVehicle_id(int employeeId){
-            this.vehicle_id.set(employeeId);
+        public void setVehicle_id(String vehicle_id){
+            this.vehicle_id.set(vehicle_id);
         }
 
-        public IntegerProperty vehidleidProperty(){
+        public StringProperty vehidleidProperty(){
             return vehicle_id;
         }
 
@@ -39,8 +41,8 @@ public class vehicles {
             return make.get();
         }
 
-        public void setMake(String firstName){
-            this.make.set(firstName);
+        public void setMake(String make){
+            this.make.set(make);
         }
 
         public StringProperty makeProperty() {
@@ -52,8 +54,8 @@ public class vehicles {
             return model.get();
         }
 
-        public void setModel(String lastName){
-            this.model.set(lastName);
+        public void setModel(String model){
+            this.model.set(model);
         }
 
         public StringProperty modelProperty() {
@@ -73,19 +75,28 @@ public class vehicles {
             return bodyType;
         }
 
-        //color
-        public String getColor() {
-            return color.get();
+        //mileage
+        public String getMileage() {
+            return mileage.get();
         }
 
-        public void setColor (String phoneNumber){
-            this.color.set(phoneNumber);
+        public void setMileage(String mileage){
+            this.mileage.set(mileage);
         }
 
-        public StringProperty colorProperty() {
-            return color;
+        public StringProperty mileageProperty() {
+            return mileage;
         }
-
+        //date
+        public String getDate(){
+            return date.get();
+        }
+        public void setDate(String date){
+            this.date.set(date);
+        }
+        public StringProperty dateProperty(){
+            return date;
+        }
 
         //year
         public int getYear() {

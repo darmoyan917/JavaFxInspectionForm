@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.*;
+import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -17,8 +18,11 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.transform.Scale;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -34,7 +38,7 @@ public class mainController {
         public int selectedMakeIndex;
     private List<Node> InspectionmiddlePaneContent = new ArrayList<>();
     private List<Node> CustomermiddlePaneContent = new ArrayList<>();
-        private Stage aboutStage = new Stage();
+    private List<Node> printMiddlePaneContent = new ArrayList<>();
         private Stage printStage = new Stage();
     private AnchorPane printAnchorPane = new AnchorPane();
     @FXML private AnchorPane middlePane;
@@ -47,6 +51,7 @@ public class mainController {
     @FXML private TextField airFilterText;
     @FXML private TextField beltsText;
     @FXML private TextArea drivetrainTextArea;
+    @FXML private TextField yearText;
         @FXML private ToggleButton oilConditionBad;
         @FXML private ToggleButton airFilterBad;
         @FXML private ToggleButton beltsBad;
@@ -74,6 +79,7 @@ public class mainController {
     //............................Upper Details label text..............................................
     @FXML private void setUpperDetailsLabelYear(){
         upperDetailsLabel.setText("Enter the vehicle year");
+        setFocusLostListeners(yearText);
     }
     @FXML private void setUpperDetailsLabelColor(){
         upperDetailsLabel.setText("Select the Color");
@@ -115,7 +121,7 @@ public class mainController {
                 showDrivetrainComments();
             }
         });
-        //...........................makeChoiceBoxListener..............................
+        //....................................makeChoiceBoxListener......................
         makeChoiceBox.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
@@ -123,8 +129,17 @@ public class mainController {
                 setModelChoiceBox();
             }
         });
+        //.......................UpperDetailLabelFocusLost...............................
     }
-
+    public void setFocusLostListeners(Node node){
+        node.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> arg0, Boolean focusLost, Boolean focusGained) {
+                if(focusLost)
+                    setUpperDetailsLabelDefault();
+            }
+        });
+    }
     //..............................DRIVETRAIN....AND....OIL LEAKS...................................
     @FXML private void setOilConditionBad(){
         setBadToggle(oilConditionBad,oilConditionText, goodToggle);
@@ -187,7 +202,7 @@ public class mainController {
             drivetrainTextArea.setVisible(true);
         }
         else {
-            drivetrainTextArea.setVisible(false);
+           drivetrainTextArea.setVisible(false);
         }
     }
 
@@ -245,13 +260,17 @@ public class mainController {
         fileChooser.showSaveDialog(leftStatusLabel.getScene().getWindow());
     }
     @FXML private void openAboutWindow (){
+        Stage aboutStage = new Stage();
         try{
             Parent root = FXMLLoader.load(getClass().getResource("../View/aboutLayout.fxml"));
             aboutStage.setScene(new Scene(root, 600, 400));
             aboutStage.initStyle(StageStyle.UNDECORATED);
             aboutStage.setResizable(false);
+            aboutStage.initOwner(middlePane.getScene().getWindow());
+            aboutStage.initModality(Modality.APPLICATION_MODAL);
             aboutStage.getIcons().add(new Image("/images/icon.png"));
-            aboutStage.show();
+            aboutStage.showAndWait();
+            aboutStage.close();
         }catch (IOException e){
         }
     }
@@ -259,11 +278,13 @@ public class mainController {
         FXMLLoader printLoader = new FXMLLoader(getClass().getResource("../View/printPageLayout.fxml"));
         Parent root = printLoader.load();
         printController = printLoader.getController();
-        printStage.setScene(new Scene(root, 1000, 800));
+        printStage.setScene(new Scene(root, 800, 600));
+        printMiddlePaneContent.clear();
+        printMiddlePaneContent.addAll( middlePane.getChildren());
         printStage.show();
-        printAnchorPane = printController.getNode();
+        printAnchorPane = printController.setTopPane(printMiddlePaneContent);
+        printStage.hide();
         printPage(printAnchorPane);
-
     }
     public void printPage(Node node){
         Printer printer = Printer.getDefaultPrinter();
@@ -289,11 +310,10 @@ public class mainController {
         Thread t1 = new Thread(new runWorldpac());
 
     }
-    ObservableList<vehicles> empList = FXCollections.observableArrayList();
     @FXML private void connectDB(){
         DBUtil util = new DBUtil();
         try {
-            empList = dbConnect();
+            dbConnect();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
