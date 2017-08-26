@@ -1,11 +1,9 @@
 package Controller;
 
 import Model.*;
-import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,13 +13,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.transform.Scale;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.Duration;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -69,6 +67,8 @@ public class mainController {
         @FXML private Label filterHousingLabel;
         @FXML private Label oilCoolerLabel;
         @FXML private Label upperDetailsLabel;
+    @FXML private ImageView lowerDetailsImage;
+    private Image valveCoverImage = new Image("images/valve_Cover.jpg");
 
     ObservableList<String> make = observableArrayList("", "ACURA", "ASTON MARTIN" ,"AUDI" ,"BENTLEY" ,"BMW" ,"BUGATTI" ,"BUICK" ,"CADILLAC" ,
             "CHEVROLET" ,"CHRYSLER" ,"DODGE","FERRARI" ,"FIAT" , "FORD" ,"GMC","HONDA" ,"HYUNDAI" ,"INFINITI" ,"ISUZU" ,"JAGUAR" ,"JEEP" ,"KIA" ,
@@ -166,6 +166,7 @@ public class mainController {
     }
     @FXML private void setValveCoverSlider(){
         setOilLeaks(valveCoverSlider,valveCoverLabel);
+        lowerDetailsImage.setImage(valveCoverImage);
     }
     @FXML private void setOilPanSlider(){
         setOilLeaks(oilPanSlider, oilPanLabel);

@@ -7,8 +7,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import Model.vehicles;
 
@@ -17,6 +19,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerController {
+    @FXML
+    private TextField customerLastName;
+    @FXML
+    private TextField customerFirstName;
+    @FXML
+    private Label searchStatus;
     @FXML
     private TableView vehiclesTable;
     @FXML
@@ -42,16 +50,30 @@ public class CustomerController {
         middlePaneContent.addAll(customerMiddlePane.getChildren());
         return  middlePaneContent;
     }
+
+    @FXML
+    private void searchCustomer(ActionEvent actionEvent) throws ClassNotFoundException, SQLException {
+        try {
+            //Get Customer information
+            vehicles emp = vehiclesDAO.searchVehicles(customerFirstName.getText().toLowerCase()+customerLastName.getText().toLowerCase());
+            //Populate Vehicle on TableView
+            populateAndShowEmployee(emp);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            searchStatus.setText("Error occurred while getting customer information from DB.\n" + e);
+            throw e;
+        }
+    }
     //Search all employees
     @FXML
-    private void searchEmployees(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+    private void searchAllCustomers(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         try {
-            //Get all Employees information
+            //Get all Customers information
             ObservableList<vehicles> empData = vehiclesDAO.searchVehicles();
-            //Populate Employees on TableView
-            populateEmployees(empData);
+            //Populate Vehicles on TableView
+            populateVehicles(empData);
         } catch (SQLException e){
-            System.out.println("Error occurred while getting employees information from DB.\n" + e);
+            System.out.println("Error occurred while getting customer information from DB.\n" + e);
             throw e;
         }
     }
@@ -77,9 +99,27 @@ public class CustomerController {
         date.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
 
     }
-    //Populate Employees for TableView
+    //Populate Vehicle
     @FXML
-    private void populateEmployees (ObservableList<vehicles> empData) throws ClassNotFoundException {
+    private void populateEmployee (vehicles emp) throws ClassNotFoundException {
+        //Declare and ObservableList for table view
+        ObservableList<vehicles> empData = FXCollections.observableArrayList();
+        //Add employee to the ObservableList
+        empData.add(emp);
+        //Set items to the employeeTable
+        vehiclesTable.setItems(empData);
+    }
+    @FXML
+    private void populateAndShowEmployee(vehicles emp) throws ClassNotFoundException {
+        if (emp != null) {
+            populateEmployee(emp);
+        } else {
+            searchStatus.setText("This customer does not exist!\n");
+        }
+    }
+    //Populate Vehicles for TableView
+    @FXML
+    private void populateVehicles(ObservableList<vehicles> empData) throws ClassNotFoundException {
         //Set items to the employeeTable
         vehiclesTable.setItems(empData);
     }

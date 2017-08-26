@@ -75,7 +75,7 @@
     </MenuBar>
     <SplitPane fx:id="splitPane" dividerPositions="0.107981220657277, 0.676056338028169" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <items>
-        <AnchorPane minWidth="-Infinity" prefHeight="749.0" prefWidth="135.0" SplitPane.resizableWithParent="false">
+        <AnchorPane maxWidth="510.0" minWidth="-Infinity" prefHeight="749.0" prefWidth="135.0" SplitPane.resizableWithParent="false">
           <children>
             <Label alignment="CENTER" layoutX="37.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Task" textAlignment="CENTER" wrapText="false">
               <font>
@@ -106,9 +106,6 @@
                      </effect>
                   </Button>
                   <Separator layoutY="299.0" prefHeight="19.0" prefWidth="113.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
-                  <Separator layoutY="87.0" prefHeight="19.0" prefWidth="113.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="87.0" />
-                  <Separator layoutX="9.0" layoutY="129.0" prefHeight="19.0" prefWidth="113.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="130.0" />
-                  <Separator layoutX="9.0" layoutY="171.0" prefHeight="19.0" prefWidth="113.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="171.0" />
                   <Separator layoutX="5.0" layoutY="573.0" AnchorPane.bottomAnchor="173.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="573.0" />
                   <ImageView blendMode="MULTIPLY" fitHeight="257.0" fitWidth="484.0" layoutX="2.0" layoutY="312.0">
                      <image>
@@ -408,7 +405,7 @@
                   <TextArea fx:id="drivetrainTextArea" layoutX="380.0" layoutY="511.0" maxWidth="200.0" prefHeight="200.0" prefWidth="147.0" promptText="Drivetrain comments" visible="false" />
         </children>
       </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="55.0" prefWidth="85.0">
+          <AnchorPane minHeight="0.0" minWidth="150.0" prefHeight="55.0" prefWidth="85.0">
                <children>
             <Label alignment="CENTER" font="$x1" layoutX="15.0" layoutY="17.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="$x2" wrapText="false" />
                   <Label fx:id="upperDetailsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="16.0" layoutY="62.0" prefHeight="150.0" prefWidth="315.0" text="Select one of the options to the left in order to get more details about it." textAlignment="CENTER" textFill="#838080" wrapText="true" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="50.0">
@@ -419,7 +416,7 @@
                   <Separator layoutX="15.0" layoutY="218.0" prefWidth="200.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" />
                   <Separator layoutY="491.0" prefWidth="200.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" />
                   <Label fx:id="middleDetailsLabel" layoutX="14.0" layoutY="230.0" prefHeight="257.0" prefWidth="301.0" textFill="#5b5959" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" />
-                  <Label fx:id="lowerDetailsLabel" layoutX="14.0" layoutY="502.0" prefHeight="239.0" prefWidth="301.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" />
+                  <ImageView fitHeight="233.0" fitWidth="301.0" layoutX="14.0" layoutY="504.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" />
                </children>
             </AnchorPane>
       </items>

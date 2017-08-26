@@ -12,9 +12,9 @@ public class vehiclesDAO {
         //*******************************
         //SELECT an Employee
         //*******************************
-        public static vehicles searchVehicles(String vehicleID) throws SQLException, ClassNotFoundException {
+        public static vehicles searchVehicles(String customer) throws SQLException, ClassNotFoundException {
             //Declare a SELECT statement
-            String selectStmt = "SELECT * FROM vehicles";
+            String selectStmt = "SELECT * FROM vehicles WHERE customer= '" +customer +"'";
 
             //Execute SELECT statement
             try {
@@ -27,7 +27,7 @@ public class vehiclesDAO {
                 //Return vehicles object
                 return vehicle;
             } catch (SQLException e) {
-                System.out.println("While searching a vehicle with " + vehicleID + " id, an error occurred: " + e);
+                System.out.println("While searching a vehicle with " + customer + " as owner, an error occurred: " + e);
                 //Return exception
                 throw e;
             }
@@ -98,7 +98,7 @@ public class vehiclesDAO {
         }
 
         //*************************************
-        //UPDATE an vehicle's email address
+        //UPDATE an vehicle's model
         //*************************************
         public static void updateVehicleModel(String vehicleID, String vehModel) throws SQLException, ClassNotFoundException {
             //Declare a UPDATE statement
