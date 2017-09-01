@@ -50,6 +50,9 @@ public class mainController {
     @FXML private TextField beltsText;
     @FXML private TextArea drivetrainTextArea;
     @FXML private TextField yearText;
+    @FXML private TextField vinText;
+    @FXML private TextField mileageText;
+    @FXML private TextField techNameText;
         @FXML private ToggleButton oilConditionBad;
         @FXML private ToggleButton airFilterBad;
         @FXML private ToggleButton beltsBad;
@@ -68,6 +71,8 @@ public class mainController {
         @FXML private Label oilCoolerLabel;
         @FXML private Label upperDetailsLabel;
     @FXML private ImageView lowerDetailsImage;
+        @FXML private DatePicker inspectionDate;
+    @FXML private ColorPicker colorPick;
     private Image valveCoverImage = new Image("images/valve_Cover.jpg");
 
     ObservableList<String> make = observableArrayList("", "ACURA", "ASTON MARTIN" ,"AUDI" ,"BENTLEY" ,"BMW" ,"BUGATTI" ,"BUICK" ,"CADILLAC" ,
@@ -83,24 +88,32 @@ public class mainController {
     }
     @FXML private void setUpperDetailsLabelColor(){
         upperDetailsLabel.setText("Select the Color");
+        setFocusLostListeners(colorPick);
+
     }
     @FXML private void setUpperDetailsLabelMake(){
         upperDetailsLabel.setText("Select the manufacturer of the vehicle");
+        setFocusLostListeners(makeChoiceBox);
     }
     @FXML private void setUpperDetailsLabelModel(){
         upperDetailsLabel.setText("Select vehicle model from the drop down menu");
+        setFocusLostListeners(modelChoiceBox);
     }
     @FXML private void setUpperDetailsLabelDate(){
         upperDetailsLabel.setText("Select the inspection date");
+        setFocusLostListeners(inspectionDate);
     }
     @FXML private void setUpperDetailsLabelVin(){
         upperDetailsLabel.setText("Enter a valid 17 digit VIN number");
+        setFocusLostListeners(vinText);
     }
     @FXML private void setUpperDetailsLabelMileage(){
         upperDetailsLabel.setText("Enter vehicle's current mileage");
+        setFocusLostListeners(mileageText);
     }
     @FXML private void setUpperDetailsLabelTechnician(){
         upperDetailsLabel.setText("Enter your name");
+        setFocusLostListeners(techNameText);
     }
     @FXML private void setUpperDetailsLabelDefault(){
         upperDetailsLabel.setText("Select one of the options to the left in order to get more details about it.")
@@ -311,15 +324,4 @@ public class mainController {
         Thread t1 = new Thread(new runWorldpac());
 
     }
-    @FXML private void connectDB(){
-        DBUtil util = new DBUtil();
-        try {
-            dbConnect();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
 }

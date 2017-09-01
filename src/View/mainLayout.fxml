@@ -32,9 +32,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" minHeight="800.0" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.mainController">
+<VBox alignment="CENTER" minHeight="800.0" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.mainController">
   <children>
-    <MenuBar prefHeight="10.0" VBox.vgrow="ALWAYS">
+    <MenuBar minWidth="10.0" prefHeight="10.0" VBox.vgrow="NEVER">
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
@@ -85,12 +85,12 @@
                 <Color blue="0.624" green="0.624" red="0.624" fx:id="x2" />
               </textFill>
             </Label>
-                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="62.0" minWidth="9.0" mnemonicParsing="false" onAction="#setCustomerToMiddlePane" prefHeight="25.0" prefWidth="94.0" text="Customer" textAlignment="CENTER">
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="104.0" minWidth="9.0" mnemonicParsing="false" onAction="#setCustomerToMiddlePane" prefHeight="25.0" prefWidth="94.0" text="Customer" textAlignment="CENTER">
                      <effect>
                         <Blend />
                      </effect>
                   </Button>
-                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="104.0" minWidth="9.0" mnemonicParsing="false" onAction="#setInspectionToMiddlePane" prefHeight="25.0" prefWidth="94.0" text="Inspection" textAlignment="CENTER">
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="62.0" minWidth="9.0" mnemonicParsing="false" onAction="#setInspectionToMiddlePane" prefHeight="25.0" prefWidth="94.0" text="Inspection" textAlignment="CENTER">
                      <effect>
                         <Blend />
                      </effect>
@@ -114,7 +114,7 @@
                   </ImageView>
           </children>
         </AnchorPane>
-      <AnchorPane id="Content" fx:id="middlePane" minWidth="-Infinity" prefHeight="749.0" prefWidth="800.0">
+      <AnchorPane id="Content" fx:id="middlePane" minWidth="750.0" prefHeight="749.0" prefWidth="800.0">
         <children>
                   <GridPane alignment="CENTER" layoutX="222.0" layoutY="216.0" maxHeight="514.0" maxWidth="772.0" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="192.0">
                      <columnConstraints>
@@ -152,7 +152,7 @@
                               <ChoiceBox fx:id="makeChoiceBox" maxWidth="164.0" onMouseClicked="#setUpperDetailsLabelMake" prefHeight="25.0" prefWidth="164.0" GridPane.columnIndex="2" />
                               <ChoiceBox fx:id="modelChoiceBox" maxWidth="182.0" onMouseClicked="#setUpperDetailsLabelModel" prefHeight="25.0" prefWidth="182.0" GridPane.columnIndex="3" />
                               <ColorPicker fx:id="colorPick" maxHeight="105.0" onMouseClicked="#setUpperDetailsLabelColor" prefHeight="25.0" prefWidth="105.0" GridPane.columnIndex="1" />
-                              <DatePicker maxWidth="135.0" onMouseClicked="#setUpperDetailsLabelDate" prefHeight="25.0" prefWidth="135.0" GridPane.columnIndex="4" />
+                              <DatePicker fx:id="inspectionDate" maxWidth="135.0" onMouseClicked="#setUpperDetailsLabelDate" prefHeight="25.0" prefWidth="135.0" GridPane.columnIndex="4" />
                               <TextField fx:id="yearText" maxWidth="60.0" onMouseClicked="#setUpperDetailsLabelYear" prefHeight="25.0" prefWidth="60.0" promptText="Year" />
                            </children>
                         </GridPane>
@@ -168,7 +168,7 @@
                            <children>
                               <TextField fx:id="vinText" maxWidth="236.0" onMouseClicked="#setUpperDetailsLabelVin" prefHeight="25.0" prefWidth="236.0" promptText="Vin Number" snapToPixel="false" />
                               <TextField fx:id="mileageText" maxWidth="156.0" onMouseClicked="#setUpperDetailsLabelMileage" prefWidth="156.0" promptText="Mileage" GridPane.columnIndex="1" />
-                              <TextField fx:id="technicianText" maxWidth="248.0" onMouseClicked="#setUpperDetailsLabelTechnician" prefHeight="25.0" prefWidth="248.0" promptText="Technician Name" GridPane.columnIndex="2" />
+                              <TextField fx:id="techNameText" maxWidth="248.0" onMouseClicked="#setUpperDetailsLabelTechnician" prefHeight="25.0" prefWidth="248.0" promptText="Technician Name" GridPane.columnIndex="2" />
                            </children>
                         </GridPane>
                      </children>
@@ -405,7 +405,7 @@
                   <TextArea fx:id="drivetrainTextArea" layoutX="380.0" layoutY="511.0" maxWidth="200.0" prefHeight="200.0" prefWidth="147.0" promptText="Drivetrain comments" visible="false" />
         </children>
       </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="150.0" prefHeight="55.0" prefWidth="85.0">
+          <AnchorPane minHeight="0.0" minWidth="85.0" prefHeight="55.0" prefWidth="150.0">
                <children>
             <Label alignment="CENTER" font="$x1" layoutX="15.0" layoutY="17.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="$x2" wrapText="false" />
                   <Label fx:id="upperDetailsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="16.0" layoutY="62.0" prefHeight="150.0" prefWidth="315.0" text="Select one of the options to the left in order to get more details about it." textAlignment="CENTER" textFill="#838080" wrapText="true" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="50.0">
