@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ColorPicker?>
@@ -73,7 +74,7 @@
         </Menu>
       </menus>
     </MenuBar>
-    <SplitPane fx:id="splitPane" dividerPositions="0.107981220657277, 0.676056338028169" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <SplitPane fx:id="splitPane" dividerPositions="0.107981220657277, 0.7331768388106417" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <items>
         <AnchorPane maxWidth="510.0" minWidth="-Infinity" prefHeight="749.0" prefWidth="135.0" SplitPane.resizableWithParent="false">
           <children>
@@ -85,7 +86,7 @@
                 <Color blue="0.624" green="0.624" red="0.624" fx:id="x2" />
               </textFill>
             </Label>
-                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="104.0" minWidth="9.0" mnemonicParsing="false" onAction="#setCustomerToMiddlePane" prefHeight="25.0" prefWidth="94.0" text="Customer" textAlignment="CENTER">
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="104.0" minWidth="9.0" mnemonicParsing="false" onAction="#setCustomersToMiddlePane" prefHeight="25.0" prefWidth="94.0" text="Customer" textAlignment="CENTER">
                      <effect>
                         <Blend />
                      </effect>
@@ -95,7 +96,7 @@
                         <Blend />
                      </effect>
                   </Button>
-                  <Button fx:id="shopInfoButton" alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="146.0" minWidth="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="Shop Info" textAlignment="CENTER">
+                  <Button fx:id="shopInfoButton" alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="230.0" minWidth="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="Shop Info" textAlignment="CENTER">
                      <effect>
                         <Blend />
                      </effect>
@@ -112,6 +113,11 @@
                         <Image url="@../images/4_cycle_schem_640px-M.gif" />
                      </image>
                   </ImageView>
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="146.0" minWidth="9.0" mnemonicParsing="false" onAction="#setVehiclesToMiddlePane" prefHeight="25.0" prefWidth="94.0" text="Vehicles" textAlignment="CENTER">
+                     <effect>
+                        <Blend />
+                     </effect>
+                  </Button>
           </children>
         </AnchorPane>
       <AnchorPane id="Content" fx:id="middlePane" minWidth="750.0" prefHeight="749.0" prefWidth="800.0">
@@ -135,9 +141,9 @@
                      </children>
                   </GridPane>
           <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Vehicle Information" textAlignment="CENTER" textFill="$x2" wrapText="false" />
-                  <AnchorPane fx:id="upperAnchor" focusTraversable="true" layoutX="-2.0" layoutY="67.0" maxHeight="-Infinity" prefHeight="150.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                  <AnchorPane focusTraversable="true" layoutX="-2.0" layoutY="67.0" maxHeight="-Infinity" prefHeight="150.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
-                        <GridPane alignment="TOP_CENTER" hgap="12.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0">
+                        <GridPane fx:id="upperGrid1" alignment="TOP_CENTER" hgap="12.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0">
                            <columnConstraints>
                               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -156,7 +162,7 @@
                               <TextField fx:id="yearText" maxWidth="60.0" onMouseClicked="#setUpperDetailsLabelYear" prefHeight="25.0" prefWidth="60.0" promptText="Year" />
                            </children>
                         </GridPane>
-                        <GridPane alignment="CENTER" hgap="27.0" layoutY="47.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0">
+                        <GridPane fx:id="upperGrid2" alignment="CENTER" hgap="27.0" layoutY="47.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0">
                            <columnConstraints>
                               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -416,7 +422,18 @@
                   <Separator layoutX="15.0" layoutY="218.0" prefWidth="200.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" />
                   <Separator layoutY="491.0" prefWidth="200.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" />
                   <Label fx:id="middleDetailsLabel" layoutX="14.0" layoutY="230.0" prefHeight="257.0" prefWidth="301.0" textFill="#5b5959" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" />
-                  <ImageView fitHeight="233.0" fitWidth="301.0" layoutX="14.0" layoutY="504.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" />
+                  <HBox alignment="CENTER" layoutX="16.0" layoutY="504.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="504.0">
+                     <children>
+                        <ImageView fx:id="lowerDetailsImage" fitHeight="233.0" fitWidth="301.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" style="-fx-alignment: CENTER;">
+                           <viewport>
+                              <Rectangle2D />
+                           </viewport>
+                           <effect>
+                              <Blend />
+                           </effect>
+                        </ImageView>
+                     </children>
+                  </HBox>
                </children>
             </AnchorPane>
       </items>

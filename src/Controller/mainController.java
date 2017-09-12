@@ -15,6 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.transform.Scale;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -22,10 +23,9 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import static Model.DBUtil.dbConnect;
+
 import static javafx.collections.FXCollections.observableArrayList;
 import static javafx.scene.paint.Color.*;
 
@@ -35,12 +35,15 @@ public class mainController {
         private static ModelInterface modelDAO = null;
         public int selectedMakeIndex;
     private List<Node> InspectionmiddlePaneContent = new ArrayList<>();
+    private List<Node> inspectionMiddlePaneContent = new ArrayList<>();
     private List<Node> CustomermiddlePaneContent = new ArrayList<>();
+    private List<Node> vehiclesMiddlePaneContent = new ArrayList<>();
     private List<Node> printMiddlePaneContent = new ArrayList<>();
         private Stage printStage = new Stage();
     private AnchorPane printAnchorPane = new AnchorPane();
     @FXML private AnchorPane middlePane;
-    @FXML private AnchorPane upperAnchor;
+    @FXML private GridPane upperGrid1;
+    @FXML private GridPane upperGrid2;
     @FXML private SplitPane splitPane;
         @FXML private ChoiceBox<String> makeChoiceBox;
         @FXML private ChoiceBox<String> modelChoiceBox;
@@ -80,44 +83,49 @@ public class mainController {
             "LAMBORGHINI" ,"LAND ROVER" ,"LEXUS" ,"LINCOLN", "LOTUS" ,"MASERATI" ,"MAYBACH" ,"MAZDA" ,"MCLAREN" ,"MERCEDES BENZ" ,"MERCURY" ,
             "MINI" ,"MITSUBISHI" ,"NISSAN" ,"OLDSMOBILE" ,"PLYMOUTH" , "PONTIAC", "PORSCHE","RANGE ROVER" ,"ROLLS ROYCE" ,"SAAB" ,"SATURN" ,
             "SCION" ,"SHELBY" ,"SMART CARS" ,"SUBARU" ,"SUZUKI" ,"TESLA", "TOYOTA" ,"VOLKSWAGEN" ,"VOLVO" );
+    public List<Node> getmiddlePane(){
+        InspectionmiddlePaneContent.addAll(middlePane.getChildren());
+        return  InspectionmiddlePaneContent;
+    }
 
     //............................Upper Details label text..............................................
+
+    public void setUpperDefaultListener(){
+        for (Node node: upperGrid1.getChildren()){
+            setFocusLostListeners(node);
+        }
+        for (Node node: upperGrid2.getChildren()){
+            setFocusLostListeners(node);
+        }
+    }
+
     @FXML private void setUpperDetailsLabelYear(){
         upperDetailsLabel.setText("Enter the vehicle year");
-        setFocusLostListeners(yearText);
     }
     @FXML private void setUpperDetailsLabelColor(){
         upperDetailsLabel.setText("Select the Color");
-        setFocusLostListeners(colorPick);
-
     }
     @FXML private void setUpperDetailsLabelMake(){
         upperDetailsLabel.setText("Select the manufacturer of the vehicle");
-        setFocusLostListeners(makeChoiceBox);
     }
     @FXML private void setUpperDetailsLabelModel(){
         upperDetailsLabel.setText("Select vehicle model from the drop down menu");
-        setFocusLostListeners(modelChoiceBox);
     }
     @FXML private void setUpperDetailsLabelDate(){
         upperDetailsLabel.setText("Select the inspection date");
-        setFocusLostListeners(inspectionDate);
     }
     @FXML private void setUpperDetailsLabelVin(){
         upperDetailsLabel.setText("Enter a valid 17 digit VIN number");
-        setFocusLostListeners(vinText);
     }
     @FXML private void setUpperDetailsLabelMileage(){
         upperDetailsLabel.setText("Enter vehicle's current mileage");
-        setFocusLostListeners(mileageText);
     }
     @FXML private void setUpperDetailsLabelTechnician(){
         upperDetailsLabel.setText("Enter your name");
-        setFocusLostListeners(techNameText);
     }
     @FXML private void setUpperDetailsLabelDefault(){
-        upperDetailsLabel.setText("Select one of the options to the left in order to get more details about it.")
-        ;}
+        upperDetailsLabel.setText("Select one of the options to the left in order to get more details about it.");
+    }
 
     // .............................CHANGE LISTENERS......................................................
     public void setChangeListeners(){
@@ -179,8 +187,8 @@ public class mainController {
     }
     @FXML private void setValveCoverSlider(){
         setOilLeaks(valveCoverSlider,valveCoverLabel);
-        lowerDetailsImage.setImage(valveCoverImage);
-    }
+            lowerDetailsImage.setImage(valveCoverImage);
+        }
     @FXML private void setOilPanSlider(){
         setOilLeaks(oilPanSlider, oilPanLabel);
     }
@@ -225,28 +233,65 @@ public class mainController {
     this.makeChoiceBox.setItems(make);
     }
 
-    public void setMiddlePaneContent(List<Node> node){
+    public void setCustomerMiddlePaneContent(List<Node> node){
         CustomermiddlePaneContent = node;
     }
+    public void setVehiclesMiddlePaneContent(List<Node> node){
+        vehiclesMiddlePaneContent = node;
+    }
+    public void setInspectionmiddlePaneContent(List<Node> node){
+        inspectionMiddlePaneContent = node;
+    }
 
-    @FXML private void setCustomerToMiddlePane(){
+    @FXML private void setCustomersToMiddlePane(){
         if(!middlePane.getChildren().isEmpty()) {
             if(!middlePane.getChildren().equals(CustomermiddlePaneContent)) {
-                InspectionmiddlePaneContent.clear();
-                InspectionmiddlePaneContent.addAll(middlePane.getChildren());
+                if(middlePane.getChildren().equals(inspectionMiddlePaneContent)) {
+                    inspectionMiddlePaneContent.clear();
+                    inspectionMiddlePaneContent.addAll(middlePane.getChildren());
+                }
+                else if(middlePane.getChildren().equals(vehiclesMiddlePaneContent)){
+                    vehiclesMiddlePaneContent.clear();
+                    vehiclesMiddlePaneContent.addAll(middlePane.getChildren());
+                }
             }
             middlePane.getChildren().clear();
             middlePane.getChildren().addAll(CustomermiddlePaneContent);
         }
     }
     @FXML private void setInspectionToMiddlePane(){
-        if(middlePane.getChildren().equals(CustomermiddlePaneContent)) {
+        if(!middlePane.getChildren().isEmpty()) {
+            if(!middlePane.getChildren().equals(inspectionMiddlePaneContent)){
+                if (middlePane.getChildren().equals(CustomermiddlePaneContent)) {
+                    CustomermiddlePaneContent.clear();
+                    CustomermiddlePaneContent.addAll(middlePane.getChildren());
+                }
+                else if (middlePane.getChildren().equals(vehiclesMiddlePaneContent)) {
+                    vehiclesMiddlePaneContent.clear();
+                    vehiclesMiddlePaneContent.addAll(middlePane.getChildren());
+                }
+            }
             middlePane.getChildren().clear();
-            middlePane.getChildren().addAll(InspectionmiddlePaneContent);
-            middlePane.setVisible(true);
+            middlePane.getChildren().addAll(inspectionMiddlePaneContent);
         }
     }
-    
+    @FXML private void setVehiclesToMiddlePane() {
+        if(!middlePane.getChildren().isEmpty()) {
+            if(!middlePane.getChildren().equals(vehiclesMiddlePaneContent)) {
+                if(middlePane.getChildren().equals(inspectionMiddlePaneContent)) {
+                    inspectionMiddlePaneContent.clear();
+                    inspectionMiddlePaneContent.addAll(middlePane.getChildren());
+                }
+                else if(middlePane.getChildren().equals(CustomermiddlePaneContent)){
+                    CustomermiddlePaneContent.clear();
+                    CustomermiddlePaneContent.addAll(middlePane.getChildren());
+                }
+            }
+            middlePane.getChildren().clear();
+            middlePane.getChildren().addAll(vehiclesMiddlePaneContent);
+        }
+    }
+
     @FXML private void setModelChoiceBox(){
         if(selectedMakeIndex > 0) {
             String selectedMake = make.get(selectedMakeIndex);

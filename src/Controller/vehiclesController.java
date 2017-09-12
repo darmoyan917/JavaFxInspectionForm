@@ -1,7 +1,8 @@
 package Controller;
 
-
-import Model.customersDAO;
+import Model.vehicles;
+import Model.vehiclesDAO;
+import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,31 +13,29 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import Model.customers;
+import javafx.util.Duration;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerController {
+public class vehiclesController {
+    public List<Node> middlePaneContent = new ArrayList<>();
+    @FXML private AnchorPane vehicleMiddlePane;
     @FXML private TextField customerLastName;
     @FXML private TextField customerFirstName;
     @FXML private Label searchStatus;
-    @FXML private TableView customersTable;
-    @FXML private AnchorPane customerMiddlePane;
-    @FXML private TableColumn<customers, String> firstName;
-    @FXML private TableColumn<customers, String> lastName;
-    @FXML private TableColumn<customers, String> address;
-    @FXML private TableColumn<customers, String> city;
-    @FXML private TableColumn<customers, String> state;
-    @FXML private TableColumn<customers, Integer> zipCode;
-    @FXML private TableColumn<customers, String> vinNumber;
-    @FXML private TableColumn<customers, String> email;
-
-    public List<Node> middlePaneContent = new ArrayList<>();
+    @FXML private TableView vehiclesTable;
+    @FXML private TableColumn<vehicles, String> vin;
+    @FXML private TableColumn<vehicles, Integer> year;
+    @FXML private TableColumn<vehicles, String> make;
+    @FXML private TableColumn<vehicles, String> model;
+    @FXML private TableColumn<vehicles, String> bodyType;
+    @FXML private TableColumn<vehicles, String> mileage;
+    @FXML private TableColumn<vehicles, String> date;
 
     public List<Node> getmiddlePane(){
-        middlePaneContent.addAll(customerMiddlePane.getChildren());
+        middlePaneContent.addAll(vehicleMiddlePane.getChildren());
         return  middlePaneContent;
     }
 
@@ -44,7 +43,7 @@ public class CustomerController {
     private void searchCustomer(ActionEvent actionEvent) throws ClassNotFoundException, SQLException {
         try {
             //Get Customer information
-            customers emp = customersDAO.searchVehicles(customerFirstName.getText().toLowerCase()+customerLastName.getText().toLowerCase());
+            vehicles emp = vehiclesDAO.searchVehicles(customerFirstName.getText().toLowerCase()+customerLastName.getText().toLowerCase());
             //Populate Vehicle on TableView
             populateAndShowEmployee(emp);
         } catch (SQLException e) {
@@ -58,7 +57,7 @@ public class CustomerController {
     private void searchAllCustomers(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         try {
             //Get all Customers information
-            ObservableList<customers> empData = customersDAO.searchVehicles();
+            ObservableList<vehicles> empData = vehiclesDAO.searchVehicles();
             //Populate Vehicles on TableView
             populateVehicles(empData);
         } catch (SQLException e){
@@ -79,38 +78,40 @@ public class CustomerController {
         When you want to use IntegerProperty or DoubleProperty, the setCellValueFactory(...)
         must have an additional asObject():
         */
-        firstName.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
-        lastName.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
-        address.setCellValueFactory(cellData -> cellData.getValue().addressProperty());
-        city.setCellValueFactory(cellData -> cellData.getValue().cityProperty());
-        state.setCellValueFactory(cellData -> cellData.getValue().stateProperty());
-        zipCode.setCellValueFactory(cellData -> cellData.getValue().zipCodeProperty().asObject());
-        vinNumber.setCellValueFactory(cellData -> cellData.getValue().vinNumberProperty());
-        email.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
+        vin.setCellValueFactory(cellData -> cellData.getValue().vehidleidProperty());
+        year.setCellValueFactory(cellData -> cellData.getValue().yearProperty().asObject());
+        make.setCellValueFactory(cellData -> cellData.getValue().makeProperty());
+        model.setCellValueFactory(cellData -> cellData.getValue().modelProperty());
+        bodyType.setCellValueFactory(cellData -> cellData.getValue().bodyTypeProperty());
+        mileage.setCellValueFactory(cellData -> cellData.getValue().mileageProperty());
+        date.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
+
     }
     //Populate Vehicle
     @FXML
-    private void populateEmployee (customers emp) throws ClassNotFoundException {
+    private void populateEmployee (vehicles emp) throws ClassNotFoundException {
         //Declare and ObservableList for table view
-        ObservableList<customers> empData = FXCollections.observableArrayList();
+        ObservableList<vehicles> empData = FXCollections.observableArrayList();
         //Add employee to the ObservableList
         empData.add(emp);
         //Set items to the employeeTable
-        customersTable.setItems(empData);
+        vehiclesTable.setItems(empData);
     }
     @FXML
-    private void populateAndShowEmployee(customers emp) throws ClassNotFoundException {
+    private void populateAndShowEmployee(vehicles emp) throws ClassNotFoundException {
         if (emp != null) {
             populateEmployee(emp);
         } else {
             searchStatus.setText("This customer does not exist!\n");
+            PauseTransition pause = new PauseTransition(Duration.seconds(2));
+            pause.setOnFinished(event -> searchStatus.setText(""));
+            pause.playFromStart();
         }
     }
     //Populate Vehicles for TableView
     @FXML
-    private void populateVehicles(ObservableList<customers> empData) throws ClassNotFoundException {
+    private void populateVehicles(ObservableList<vehicles> empData) throws ClassNotFoundException {
         //Set items to the employeeTable
-        customersTable.setItems(empData);
+        vehiclesTable.setItems(empData);
     }
-
 }

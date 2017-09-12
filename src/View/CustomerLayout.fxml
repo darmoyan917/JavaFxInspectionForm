@@ -74,19 +74,19 @@
                         <TextField maxWidth="90.0" minWidth="85.0" prefHeight="25.0" prefWidth="85.0" promptText="Zip Code" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
                      </children>
                   </GridPane>
-                  <Separator layoutX="2.0" layoutY="45.0" prefHeight="6.0" prefWidth="234.0" AnchorPane.leftAnchor="12.0" />
-                  <Separator layoutX="12.0" layoutY="153.0" prefWidth="200.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" />
+                  <Separator layoutX="12.0" layoutY="191.0" prefWidth="200.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" />
                   <HBox alignment="CENTER" layoutX="25.0" layoutY="436.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
                      <children>
-                        <TableView fx:id="vehiclesTable" maxWidth="1050.0" minWidth="750.0" prefHeight="200.0" prefWidth="750.0" HBox.hgrow="ALWAYS">
+                        <TableView fx:id="customersTable" maxWidth="1250.0" minWidth="750.0" prefHeight="346.0" prefWidth="750.0" HBox.hgrow="ALWAYS">
                           <columns>
-                            <TableColumn fx:id="year" maxWidth="120.0" minWidth="60.0" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Year" />
-                            <TableColumn fx:id="make" maxWidth="190.0" minWidth="100.0" prefWidth="120.0" style="-fx-alignment: CENTER;" text="Make" />
-                              <TableColumn fx:id="model" maxWidth="190.0" minWidth="100.0" prefWidth="130.0" sortable="false" style="-fx-alignment: CENTER;" text="Model" />
-                              <TableColumn fx:id="bodyType" maxWidth="170.0" minWidth="100.0" prefWidth="100.0" sortable="false" style="-fx-alignment: CENTER;" text="Body Type" />
-                              <TableColumn fx:id="mileage" maxWidth="160.0" minWidth="60.0" prefWidth="75.0" style="-fx-alignment: CENTER;" text="mileage" />
-                              <TableColumn fx:id="date" maxWidth="180.0" minWidth="100.0" prefWidth="100.0" style="-fx-alignment: CENTER;" text="date" />
-                              <TableColumn fx:id="vin" maxWidth="350.0" minWidth="210.0" prefWidth="250.0" sortable="false" style="-fx-alignment: CENTER;" text="Vin Number" />
+                            <TableColumn fx:id="firstName" maxWidth="150.0" minWidth="90.0" prefWidth="100.0" style="-fx-alignment: CENTER;" text="First Name" />
+                            <TableColumn fx:id="lastName" maxWidth="200.0" minWidth="110.0" prefWidth="150.0" style="-fx-alignment: CENTER;" text="Last Name" />
+                              <TableColumn fx:id="address" maxWidth="380.0" minWidth="260.0" prefWidth="290.0" sortable="false" style="-fx-alignment: CENTER;" text="Address" />
+                              <TableColumn fx:id="city" maxWidth="200.0" minWidth="140.0" prefWidth="160.0" sortable="false" style="-fx-alignment: CENTER;" text="City" />
+                              <TableColumn fx:id="state" maxWidth="160.0" minWidth="60.0" prefWidth="75.0" style="-fx-alignment: CENTER;" text="State" />
+                              <TableColumn fx:id="zipCode" maxWidth="180.0" minWidth="80.0" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Zip Code" />
+                              <TableColumn fx:id="email" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Email" />
+                              <TableColumn fx:id="vinNumber" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Vin Number" />
                           </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -94,8 +94,8 @@
                         </TableView>
                      </children>
                   </HBox>
-                  <Button layoutX="12.0" layoutY="376.0" mnemonicParsing="false" onAction="#searchAllCustomers" text="Search All Vehicles" />
-                  <Label alignment="CENTER" layoutX="14.0" layoutY="332.0" style="&#10;" text="Customer Vehicles" textAlignment="CENTER" wrapText="false">
+                  <Button layoutX="12.0" layoutY="376.0" mnemonicParsing="false" onAction="#searchAllCustomers" text="Search All Customers" />
+                  <Label alignment="CENTER" layoutX="14.0" layoutY="332.0" style="&#10;" text="Customers" textAlignment="CENTER" wrapText="false">
                      <font>
                         <Font size="18.0" fx:id="x11" />
                      </font>
@@ -104,8 +104,24 @@
                      </textFill>
                   </Label>
                   <Separator layoutX="12.0" layoutY="361.0" prefHeight="6.0" prefWidth="234.0" />
-                  <Button layoutX="147.0" layoutY="376.0" mnemonicParsing="false" onAction="#searchCustomer" text="Search Customer" />
-                  <AnchorPane focusTraversable="true" layoutX="11.0" layoutY="218.0" maxHeight="-Infinity" prefHeight="116.0" prefWidth="800.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0">
+                  <GridPane layoutX="14.0" layoutY="153.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#searchCustomer" text="Search Customer" GridPane.columnIndex="1" />
+                        <Button mnemonicParsing="false" text="Add Customer" />
+                        <Button mnemonicParsing="false" text="Update Customer" GridPane.columnIndex="2" />
+                        <Button mnemonicParsing="false" text="Delete Customer" GridPane.columnIndex="3" />
+                     </children>
+                  </GridPane>
+                  <AnchorPane focusTraversable="true" layoutX="11.0" layoutY="241.0" maxHeight="-Infinity" prefHeight="87.0" prefWidth="778.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0">
                      <children>
                         <GridPane alignment="TOP_CENTER" hgap="12.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0">
                            <columnConstraints>
@@ -142,7 +158,7 @@
                      </children>
                   </AnchorPane>
                   <Label fx:id="searchStatus" layoutX="619.0" layoutY="380.0" prefHeight="17.0" />
-                  <Label alignment="CENTER" layoutX="14.0" layoutY="168.0" style="&#10;" text="Add Vehicle for Customer" textAlignment="CENTER" wrapText="false">
+                  <Label alignment="CENTER" layoutX="14.0" layoutY="198.0" style="&#10;" text="Add Vehicle for Customer" textAlignment="CENTER" wrapText="false">
                      <font>
                         <Font size="18.0" fx:id="x12" />
                      </font>
@@ -150,7 +166,6 @@
                         <Color blue="0.624" green="0.624" red="0.624" fx:id="x22" />
                      </textFill>
                   </Label>
-                  <Separator layoutX="12.0" layoutY="196.0" prefHeight="6.0" prefWidth="234.0" AnchorPane.leftAnchor="12.0" />
         </children>
       </AnchorPane>
       </items>

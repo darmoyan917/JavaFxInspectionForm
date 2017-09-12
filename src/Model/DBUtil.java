@@ -18,7 +18,7 @@ public class DBUtil {
 
         //Connect to DB
         public static void dbConnect() throws SQLException, ClassNotFoundException {
-            //Setting Oracle JDBC Driver
+            //Setting mySQL JDBC Driver
             try {
                 Class.forName(JDBC_DRIVER);
             } catch (ClassNotFoundException e) {
@@ -26,8 +26,6 @@ public class DBUtil {
                 e.printStackTrace();
                 throw e;
             }
-
-            System.out.println("MySQL JDBC Driver Registered!");
 
             //Establish the mySQL Connection using Connection String
             try {

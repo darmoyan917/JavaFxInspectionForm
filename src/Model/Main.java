@@ -3,6 +3,7 @@ package Model;
 import Controller.CustomerController;
 import Controller.mainController;
 import Controller.printPageController;
+import Controller.vehiclesController;
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
@@ -22,15 +23,20 @@ import java.util.List;
 public class Main extends Application {
     static mainController controller;
     static CustomerController custContoller;
+    static vehiclesController vehController;
     static printPageController printController;
-    public List<Node> middlePaneContent = new ArrayList<>();
+    public List<Node> customerMiddlePaneContent = new ArrayList<>();
+    public List<Node> vehiclesMiddlePaneContent = new ArrayList<>();
+    public List<Node> inspectionMiddlePaneContent = new ArrayList<>();
     public List<Node> printAnchorPane = new ArrayList<>();
     @Override
     public void start(Stage primaryStage) throws Exception{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/mainLayout.fxml"));
         FXMLLoader custLoader = new FXMLLoader(getClass().getResource("../View/CustomerLayout.fxml"));
+        FXMLLoader vehLoader = new FXMLLoader(getClass().getResource("../View/vehicleLayout.fxml"));
         Parent root = loader.load();
         custLoader.load();
+        vehLoader.load();
 
         primaryStage.setTitle("Inspection Form");
         primaryStage.getIcons().add(new Image("/images/icon.png"));
@@ -41,9 +47,15 @@ public class Main extends Application {
         controller = loader.getController();
         controller.setMakeChoiceBox();
         custContoller = custLoader.getController();
-        middlePaneContent = custContoller.getmiddlePane();
-        controller.setMiddlePaneContent(middlePaneContent);
+        vehController = vehLoader.getController();
+        customerMiddlePaneContent = custContoller.getmiddlePane();
+        vehiclesMiddlePaneContent = vehController.getmiddlePane();
+        inspectionMiddlePaneContent = controller.getmiddlePane();
+        controller.setInspectionmiddlePaneContent(inspectionMiddlePaneContent);
+        controller.setCustomerMiddlePaneContent(customerMiddlePaneContent);
+        controller.setVehiclesMiddlePaneContent(vehiclesMiddlePaneContent);
         controller.setChangeListeners();
+        controller.setUpperDefaultListener();
         PauseTransition pause = new PauseTransition(Duration.seconds(0.2));
         primaryStage.maximizedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
