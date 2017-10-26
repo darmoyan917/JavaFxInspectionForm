@@ -1,9 +1,6 @@
 package Model;
 
-import Controller.CustomerController;
-import Controller.mainController;
-import Controller.printPageController;
-import Controller.vehiclesController;
+import Controller.*;
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
@@ -22,21 +19,25 @@ import java.util.List;
 
 public class Main extends Application {
     static mainController controller;
-    static CustomerController custContoller;
+    static customerController custContoller;
     static vehiclesController vehController;
+    static shopInfoController shopController;
     static printPageController printController;
     public List<Node> customerMiddlePaneContent = new ArrayList<>();
     public List<Node> vehiclesMiddlePaneContent = new ArrayList<>();
     public List<Node> inspectionMiddlePaneContent = new ArrayList<>();
+    public List<Node> shopInfoMiddlePaneContent = new ArrayList<>();
     public List<Node> printAnchorPane = new ArrayList<>();
     @Override
     public void start(Stage primaryStage) throws Exception{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/mainLayout.fxml"));
-        FXMLLoader custLoader = new FXMLLoader(getClass().getResource("../View/CustomerLayout.fxml"));
+        FXMLLoader custLoader = new FXMLLoader(getClass().getResource("../View/customerLayout.fxml"));
         FXMLLoader vehLoader = new FXMLLoader(getClass().getResource("../View/vehicleLayout.fxml"));
+        FXMLLoader shopLoader = new FXMLLoader(getClass().getResource("../View/shopInfoLayout.fxml"));
         Parent root = loader.load();
         custLoader.load();
         vehLoader.load();
+        shopLoader.load();
 
         primaryStage.setTitle("Inspection Form");
         primaryStage.getIcons().add(new Image("/images/icon.png"));
@@ -48,12 +49,16 @@ public class Main extends Application {
         controller.setMakeChoiceBox();
         custContoller = custLoader.getController();
         vehController = vehLoader.getController();
+        shopController = shopLoader.getController();
         customerMiddlePaneContent = custContoller.getmiddlePane();
         vehiclesMiddlePaneContent = vehController.getmiddlePane();
         inspectionMiddlePaneContent = controller.getmiddlePane();
+        shopInfoMiddlePaneContent = shopController.getmiddlePane();
         controller.setInspectionmiddlePaneContent(inspectionMiddlePaneContent);
         controller.setCustomerMiddlePaneContent(customerMiddlePaneContent);
         controller.setVehiclesMiddlePaneContent(vehiclesMiddlePaneContent);
+        controller.setShopInfoMiddlePaneContent(shopInfoMiddlePaneContent);
+        custContoller.setVehiclesMiddlePaneContent(vehiclesMiddlePaneContent);
         controller.setChangeListeners();
         controller.setUpperDefaultListener();
         PauseTransition pause = new PauseTransition(Duration.seconds(0.2));

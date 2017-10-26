@@ -36,6 +36,7 @@ public class mainController {
         public int selectedMakeIndex;
     private List<Node> InspectionmiddlePaneContent = new ArrayList<>();
     private List<Node> inspectionMiddlePaneContent = new ArrayList<>();
+    private List<Node> shopInfoMiddlePaneContent = new ArrayList<>();
     private List<Node> CustomermiddlePaneContent = new ArrayList<>();
     private List<Node> vehiclesMiddlePaneContent = new ArrayList<>();
     private List<Node> printMiddlePaneContent = new ArrayList<>();
@@ -228,11 +229,10 @@ public class mainController {
         }
     }
 
-    //..........................END    DRIVETRAIN    AND   OIL LEAKS............................
+    //..........................END    DRIVETRAIN    AND   OIL LEAKS....................................
     public void setMakeChoiceBox() {
     this.makeChoiceBox.setItems(make);
     }
-
     public void setCustomerMiddlePaneContent(List<Node> node){
         CustomermiddlePaneContent = node;
     }
@@ -242,8 +242,12 @@ public class mainController {
     public void setInspectionmiddlePaneContent(List<Node> node){
         inspectionMiddlePaneContent = node;
     }
+    public void setShopInfoMiddlePaneContent(List<Node> node){
+        shopInfoMiddlePaneContent = node;
+    }
+    //................................Set the Middle Pane Main View.....................................
 
-    @FXML private void setCustomersToMiddlePane(){
+    @FXML public void setCustomersToMiddlePane(){
         if(!middlePane.getChildren().isEmpty()) {
             if(!middlePane.getChildren().equals(CustomermiddlePaneContent)) {
                 if(middlePane.getChildren().equals(inspectionMiddlePaneContent)) {
@@ -254,12 +258,16 @@ public class mainController {
                     vehiclesMiddlePaneContent.clear();
                     vehiclesMiddlePaneContent.addAll(middlePane.getChildren());
                 }
+                else if(middlePane.getChildren().equals(shopInfoMiddlePaneContent)){
+                    shopInfoMiddlePaneContent.clear();
+                    shopInfoMiddlePaneContent.addAll(middlePane.getChildren());
+                }
             }
             middlePane.getChildren().clear();
             middlePane.getChildren().addAll(CustomermiddlePaneContent);
         }
     }
-    @FXML private void setInspectionToMiddlePane(){
+    @FXML public void setInspectionToMiddlePane(){
         if(!middlePane.getChildren().isEmpty()) {
             if(!middlePane.getChildren().equals(inspectionMiddlePaneContent)){
                 if (middlePane.getChildren().equals(CustomermiddlePaneContent)) {
@@ -270,12 +278,16 @@ public class mainController {
                     vehiclesMiddlePaneContent.clear();
                     vehiclesMiddlePaneContent.addAll(middlePane.getChildren());
                 }
+                else if(middlePane.getChildren().equals(shopInfoMiddlePaneContent)){
+                    shopInfoMiddlePaneContent.clear();
+                    shopInfoMiddlePaneContent.addAll(middlePane.getChildren());
+                }
             }
             middlePane.getChildren().clear();
             middlePane.getChildren().addAll(inspectionMiddlePaneContent);
         }
     }
-    @FXML private void setVehiclesToMiddlePane() {
+    @FXML public void setVehiclesToMiddlePane() {
         if(!middlePane.getChildren().isEmpty()) {
             if(!middlePane.getChildren().equals(vehiclesMiddlePaneContent)) {
                 if(middlePane.getChildren().equals(inspectionMiddlePaneContent)) {
@@ -286,12 +298,52 @@ public class mainController {
                     CustomermiddlePaneContent.clear();
                     CustomermiddlePaneContent.addAll(middlePane.getChildren());
                 }
+                else if(middlePane.getChildren().equals(shopInfoMiddlePaneContent)){
+                    shopInfoMiddlePaneContent.clear();
+                    shopInfoMiddlePaneContent.addAll(middlePane.getChildren());
+                }
             }
             middlePane.getChildren().clear();
             middlePane.getChildren().addAll(vehiclesMiddlePaneContent);
         }
     }
-
+    @FXML public void setShopInfoToMiddlePane() {
+        if(!middlePane.getChildren().isEmpty()) {
+            if(!middlePane.getChildren().equals(shopInfoMiddlePaneContent)) {
+                if(middlePane.getChildren().equals(inspectionMiddlePaneContent)) {
+                    inspectionMiddlePaneContent.clear();
+                    inspectionMiddlePaneContent.addAll(middlePane.getChildren());
+                }
+                else if(middlePane.getChildren().equals(CustomermiddlePaneContent)){
+                    CustomermiddlePaneContent.clear();
+                    CustomermiddlePaneContent.addAll(middlePane.getChildren());
+                }
+                else if (middlePane.getChildren().equals(vehiclesMiddlePaneContent)) {
+                    vehiclesMiddlePaneContent.clear();
+                    vehiclesMiddlePaneContent.addAll(middlePane.getChildren());
+                }
+            }
+            middlePane.getChildren().clear();
+            middlePane.getChildren().addAll(shopInfoMiddlePaneContent);
+        }
+    }
+    public void setVehiclesToMiddlePane(AnchorPane customermiddlePane) {
+        if(!customermiddlePane.getChildren().isEmpty()) {
+            /*if(!customermiddlePane.getChildren().equals(vehiclesMiddlePaneContent)) {
+                if(customermiddlePane.getChildren().equals(inspectionMiddlePaneContent)) {
+                    inspectionMiddlePaneContent.clear();
+                    inspectionMiddlePaneContent.addAll(customermiddlePane.getChildren());
+                }
+                else if(customermiddlePane.getChildren().equals(CustomermiddlePaneContent)){
+                    CustomermiddlePaneContent.clear();
+                    CustomermiddlePaneContent.addAll(customermiddlePane.getChildren());
+                }
+            }*/
+            customermiddlePane.getChildren().clear();
+            customermiddlePane.getChildren().addAll(vehiclesMiddlePaneContent);
+        }
+    }
+    //.........................................................................................................
     @FXML private void setModelChoiceBox(){
         if(selectedMakeIndex > 0) {
             String selectedMake = make.get(selectedMakeIndex);

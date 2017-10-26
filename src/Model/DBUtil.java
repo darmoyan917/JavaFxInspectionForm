@@ -1,6 +1,6 @@
 package Model;
 
-import Controller.CustomerController;
+import Controller.customerController;
 import com.sun.rowset.CachedRowSetImpl;
 
 import java.sql.*;
@@ -9,7 +9,7 @@ import java.sql.*;
 public class DBUtil {
 
         private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-        private static CustomerController c = new CustomerController();
+        private static customerController c = new customerController();
         //Connection
         private static Connection conn = null;
 

@@ -10,9 +10,9 @@ public class customersDAO {
         //*******************************
         //SELECT a Customer
         //*******************************
-        public static customers searchVehicles(String customer) throws SQLException, ClassNotFoundException {
+        public static customers searchCustomers(String firstName, String lastName) throws SQLException, ClassNotFoundException {
             //Declare a SELECT statement
-            String selectStmt = "SELECT * FROM customers WHERE customer= '" +customer +"'";
+            String selectStmt = "SELECT * FROM customers WHERE firstName= '" +firstName +"' AND lastName='" +lastName+"'";
 
             //Execute SELECT statement
             try {
@@ -25,7 +25,7 @@ public class customersDAO {
                 //Return vehicles object
                 return vehicle;
             } catch (SQLException e) {
-                System.out.println("While searching for " + customer + " an error occurred: " + e);
+                System.out.println("While searching for " + firstName + " an error occurred: " + e);
                 //Return exception
                 throw e;
             }
@@ -53,7 +53,7 @@ public class customersDAO {
         //*******************************
         //SELECT Vehicles
         //*******************************
-        public static ObservableList<customers> searchVehicles () throws SQLException, ClassNotFoundException {
+        public static ObservableList<customers> searchCustomers() throws SQLException, ClassNotFoundException {
             //Declare a SELECT statement
             String selectStmt = "SELECT * FROM customers";
 
@@ -143,7 +143,7 @@ public class customersDAO {
         //*************************************
         //INSERT a vehicle
         //*************************************
-        public static void insertVehicle(String firstName, String lastName, String address, String city, String state, int zipCode, String vinNumber, String email) throws SQLException, ClassNotFoundException {
+        public static void insertCustomer(String firstName, String lastName, String address, String city, String state, String zipCode, String vinNumber, String email) throws SQLException, ClassNotFoundException {
             //Declare a DELETE statement
             String updateStmt =
                     "BEGIN\n" +

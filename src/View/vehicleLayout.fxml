@@ -67,7 +67,7 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <Label fx:id="searchStatus" layoutX="399.0" layoutY="167.0" prefHeight="17.0" />
+                  <Label fx:id="searchStatus" layoutX="399.0" layoutY="167.0" prefHeight="17.0" AnchorPane.rightAnchor="30.0" />
         </children>
       </AnchorPane>
       </items>

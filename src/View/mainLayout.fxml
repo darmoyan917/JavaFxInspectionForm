@@ -96,12 +96,12 @@
                         <Blend />
                      </effect>
                   </Button>
-                  <Button fx:id="shopInfoButton" alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="230.0" minWidth="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="Shop Info" textAlignment="CENTER">
+                  <Button fx:id="shopInfoButton" alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="188.0" minWidth="9.0" mnemonicParsing="false" onAction="#setShopInfoToMiddlePane" prefHeight="25.0" prefWidth="94.0" text="Shop Info" textAlignment="CENTER">
                      <effect>
                         <Blend />
                      </effect>
                   </Button>
-                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="188.0" minWidth="9.0" mnemonicParsing="false" onAction="#runWorldpac" prefHeight="25.0" prefWidth="94.0" text="WorldPac" textAlignment="CENTER">
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="230.0" minWidth="9.0" mnemonicParsing="false" onAction="#runWorldpac" prefHeight="25.0" prefWidth="94.0" text="WorldPac" textAlignment="CENTER">
                      <effect>
                         <Blend />
                      </effect>
