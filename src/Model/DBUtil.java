@@ -110,4 +110,19 @@ public class DBUtil {
                 dbDisconnect();
             }
         }
+        public static int FindMaxID(String sql) throws SQLException {
+            int maxID = 0;
+            try {
+                dbConnect();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery(sql);
+            if (rs.next()) {
+                maxID = rs.getInt("max_id");
+            }
+            dbDisconnect();
+            return maxID;
+        }
     }

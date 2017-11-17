@@ -3,11 +3,12 @@ package Controller;
 
 import Model.customersDAO;
 import javafx.animation.PauseTransition;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -16,7 +17,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import Model.customers;
 import javafx.util.Duration;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -42,8 +42,6 @@ public class customerController {
     @FXML private TableColumn<customers, Integer> zipCode;
     @FXML private TableColumn<customers, String> vinNumber;
     @FXML private TableColumn<customers, String> email;
-    static mainController controller;
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/mainLayout.fxml"));
     public List<Node> vehiclesMiddlePaneContent = new ArrayList<>();
     private customers temp;
     public List<Node> middlePaneContent = new ArrayList<>();
@@ -58,6 +56,42 @@ public class customerController {
         pause.setOnFinished(event -> searchStatus.setText(""));
         pause.playFromStart();
     }
+    //.......................................Change Listeners for the text Fields.......................................
+    public void setChangeListeners(){
+        customerZip.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    customerZip.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+        customerZip.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                if (newValue.intValue() > oldValue.intValue()) {
+                    // Check if the new character is greater than LIMIT
+                    if (customerZip.getText().length() >= 5) {
+
+                        customerZip.setText(customerZip.getText().substring(0, 5));
+                    }
+                }
+            }
+        });
+        customerState.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                if (newValue.intValue() > oldValue.intValue()) {
+                    // Check if the new character is greater than LIMIT
+                    if (customerState.getText().length() >= 2) {
+
+                        customerState.setText(customerState.getText().substring(0, 2));
+                    }
+                }
+            }
+        });
+    }
+    //..................................................................................................................
     // Search one customer
     @FXML
     private void searchCustomer(ActionEvent actionEvent) throws ClassNotFoundException, SQLException {
@@ -89,14 +123,9 @@ public class customerController {
     @FXML
     private void initialize () {
         /*
-        The setCellValueFactory(...) that we set on the table columns are used to determine
-        which field inside the Employee objects should be used for the particular column.
+        The setCellValueFactory(...) set on the table columns are used to determine
+        which field inside the Customer objects should be used for the particular column.
         The arrow -> indicates that we're using a Java 8 feature called Lambdas.
-        (Another option would be to use a PropertyValueFactory, but this is not type-safe
-
-        We're only using StringProperty values for our table columns in this example.
-        When you want to use IntegerProperty or DoubleProperty, the setCellValueFactory(...)
-        must have an additional asObject():
         */
         firstName.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
         lastName.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
@@ -145,28 +174,35 @@ public class customerController {
     //Insert an employee to the DB
     @FXML
     private void insertCustomer(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        try {
-            customersDAO.insertCustomer(customerFirstName.getText(),customerLastName.getText(), customerAddress.getText(), customerCity.getText(),
-                    customerState.getText(), customerZip.getText(), customerVin.getText(), customerEmail.getText());
-            setSearchStatus("Employee inserted!");
-        } catch (SQLException e) {
-            setSearchStatus("Problem occurred while inserting employee " + e);
-            throw e;
+        if(!customerZip.getText().equals("")) {
+            try {
+                int max = customersDAO.findMaxID();
+                System.out.println(max);
+                int maxID = max + 1;
+                customersDAO.insertCustomer(maxID, customerFirstName.getText(), customerLastName.getText(), customerAddress.getText(), customerCity.getText(),
+                        customerState.getText(), customerZip.getText(), customerVin.getText(), customerEmail.getText());
+                setSearchStatus("Customer inserted!");
+            } catch (SQLException e) {
+                setSearchStatus("Problem occurred while inserting customer " + e);
+                throw e;
+            }
+        }
+        else{
+            setSearchStatus("Please Enter Zip Code Before Adding Customer");
         }
     }
 
-    //Delete an employee with a given employee Id from DB
+    //Delete an customer with a given customer first and last name from DB
     @FXML
     private void deleteCustomer(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         try {
             customersDAO.deleteCustomerWithName(customerFirstName.getText(),customerLastName.getText());
-            setSearchStatus("Employee deleted! ");
+            setSearchStatus("Customer deleted! ");
         } catch (SQLException e) {
-            setSearchStatus("Problem occurred while deleting employee " + e);
+            setSearchStatus("Problem occurred while deleting customer " + e);
             throw e;
         }
     }
-
     @FXML
     private void handleRowSelect() throws IOException {
         customers row = customersTable.getSelectionModel().getSelectedItem();
@@ -176,9 +212,7 @@ public class customerController {
         } else if(row==temp) {
         String FirstName = firstName.getCellData(customersTable.getSelectionModel().getSelectedIndex());
         String LastName = lastName.getCellData(customersTable.getSelectionModel().getSelectedIndex());
-        loader.load();
-        controller = loader.getController();
-        controller.setVehiclesToMiddlePane(customerMiddlePane);
+
         }
     }
     public void setVehiclesMiddlePaneContent(List<Node> node){

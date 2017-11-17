@@ -59,6 +59,7 @@ public class Main extends Application {
         controller.setVehiclesMiddlePaneContent(vehiclesMiddlePaneContent);
         controller.setShopInfoMiddlePaneContent(shopInfoMiddlePaneContent);
         custContoller.setVehiclesMiddlePaneContent(vehiclesMiddlePaneContent);
+        custContoller.setChangeListeners();
         controller.setChangeListeners();
         controller.setUpperDefaultListener();
         PauseTransition pause = new PauseTransition(Duration.seconds(0.2));

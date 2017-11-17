@@ -23,8 +23,12 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import static javafx.collections.FXCollections.observableArrayList;
 import static javafx.scene.paint.Color.*;
@@ -130,7 +134,7 @@ public class mainController {
 
     // .............................CHANGE LISTENERS......................................................
     public void setChangeListeners(){
-        //............................DividerResizeListeners.............................
+        //............................DividerResizeListeners..............................................
         splitPane.getDividers().get(1).positionProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
@@ -150,6 +154,73 @@ public class mainController {
                 selectedMakeIndex = (int) newValue;
                 setModelChoiceBox();
             }
+        });
+        //....................................Text Field Listener..........................................
+        yearText.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                if (newValue.intValue() > oldValue.intValue()) {
+                    // Check if the new character is greater than LIMIT
+                    if (yearText.getText().length() >= 4) {
+
+                        yearText.setText(yearText.getText().substring(0, 4));
+                    }
+                }
+            }
+        });
+        yearText.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    yearText.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+        vinText.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                if (newValue.intValue() > oldValue.intValue()) {
+                    if (vinText.getText().length() >= 17) {
+                        vinText.setText(vinText.getText().substring(0, 17));
+                    }
+                }
+            }
+        });
+        vinText.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                vinText.setText(newValue.toUpperCase());
+            }
+        });
+        mileageText.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                if (newValue.intValue() > oldValue.intValue()) {
+                         if (mileageText.getText().length() >= 7) {
+                             mileageText.setText(mileageText.getText().substring(0, 7));
+                    }
+                }
+            }
+        });
+        mileageText.textProperty().addListener(new ChangeListener<String>() {
+                @Override
+                public void changed (ObservableValue < ? extends String > observable, String oldValue, String newValue){
+                /*if (!newValue.matches("\\d*")) {
+                    mileageText.setText(newValue.replaceAll("[^\\d]", ""));
+                }*/
+                if (newValue != "") {
+                    if (newValue != oldValue) {
+                        try {
+                            Number formatted = NumberFormat.getNumberInstance(Locale.US).parse(newValue);
+                            System.out.println(formatted);
+                            mileageText.setText(String.format("%,d", formatted));
+                        } catch (ParseException e) {
+                        } catch (IllegalArgumentException s) {
+                        }
+                    }
+                }
+            }
+
         });
         //.......................UpperDetailLabelFocusLost...............................
     }
@@ -267,6 +338,7 @@ public class mainController {
             middlePane.getChildren().addAll(CustomermiddlePaneContent);
         }
     }
+
     @FXML public void setInspectionToMiddlePane(){
         if(!middlePane.getChildren().isEmpty()) {
             if(!middlePane.getChildren().equals(inspectionMiddlePaneContent)){
@@ -287,6 +359,7 @@ public class mainController {
             middlePane.getChildren().addAll(inspectionMiddlePaneContent);
         }
     }
+
     @FXML public void setVehiclesToMiddlePane() {
         if(!middlePane.getChildren().isEmpty()) {
             if(!middlePane.getChildren().equals(vehiclesMiddlePaneContent)) {
@@ -307,6 +380,7 @@ public class mainController {
             middlePane.getChildren().addAll(vehiclesMiddlePaneContent);
         }
     }
+
     @FXML public void setShopInfoToMiddlePane() {
         if(!middlePane.getChildren().isEmpty()) {
             if(!middlePane.getChildren().equals(shopInfoMiddlePaneContent)) {
@@ -325,22 +399,6 @@ public class mainController {
             }
             middlePane.getChildren().clear();
             middlePane.getChildren().addAll(shopInfoMiddlePaneContent);
-        }
-    }
-    public void setVehiclesToMiddlePane(AnchorPane customermiddlePane) {
-        if(!customermiddlePane.getChildren().isEmpty()) {
-            /*if(!customermiddlePane.getChildren().equals(vehiclesMiddlePaneContent)) {
-                if(customermiddlePane.getChildren().equals(inspectionMiddlePaneContent)) {
-                    inspectionMiddlePaneContent.clear();
-                    inspectionMiddlePaneContent.addAll(customermiddlePane.getChildren());
-                }
-                else if(customermiddlePane.getChildren().equals(CustomermiddlePaneContent)){
-                    CustomermiddlePaneContent.clear();
-                    CustomermiddlePaneContent.addAll(customermiddlePane.getChildren());
-                }
-            }*/
-            customermiddlePane.getChildren().clear();
-            customermiddlePane.getChildren().addAll(vehiclesMiddlePaneContent);
         }
     }
     //.........................................................................................................

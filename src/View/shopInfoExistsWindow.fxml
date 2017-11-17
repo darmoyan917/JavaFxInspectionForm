@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="450.0" style="-fx-background-color: LIGHTBLUE; -fx-border-color: GREY; -fx-border-width: 4;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.shopInfoExistsController">
+   <children>
+      <Button layoutX="63.0" layoutY="214.0" mnemonicParsing="false" onAction="#yesButtonAction" prefHeight="25.0" prefWidth="104.0" text="Yes" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="60.0" />
+      <Label layoutX="15.0" layoutY="4.0" prefHeight="35.0" prefWidth="353.0" text="Shop Info Already Exists " AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="4.0">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <Separator layoutX="6.0" layoutY="40.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
+      <Button fx:id="noButton" layoutX="286.0" layoutY="210.0" mnemonicParsing="false" onAction="#noButtonAction" prefHeight="25.0" prefWidth="104.0" text="No" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="60.0" />
+      <Label layoutX="28.0" layoutY="88.0" prefHeight="70.0" prefWidth="181.0" text="Shop Info is already stored, would you like to overwrite the existing info?" wrapText="true" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="245.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="shopInfoLabel" layoutX="302.0" layoutY="51.0" prefHeight="139.0" prefWidth="144.0" />
+      <Separator layoutX="222.0" layoutY="46.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="47.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="220.0" AnchorPane.topAnchor="42.0" />
+      <Separator layoutX="115.0" layoutY="197.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Label layoutX="233.0" layoutY="51.0" text="Shop :" />
+      <Label layoutX="233.0" layoutY="68.0" text="Website :" />
+      <Label layoutX="233.0" layoutY="85.0" text="Address :" />
+      <Label layoutX="233.0" layoutY="102.0" text="City :" />
+      <Label layoutX="234.0" layoutY="119.0" text="State :" />
+      <Label layoutX="233.0" layoutY="136.0" text="Zip Code :" />
+      <Label layoutX="233.0" layoutY="153.0" text="Phone :" />
+      <Label layoutX="233.0" layoutY="170.0" text="Slogan :" />
+      <Separator layoutX="287.0" layoutY="11.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="60.0" AnchorPane.rightAnchor="145.0" AnchorPane.topAnchor="52.0" />
+   </children>
+</AnchorPane>
