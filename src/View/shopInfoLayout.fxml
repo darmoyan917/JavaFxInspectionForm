@@ -13,7 +13,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="shopInfoMiddlePane" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.shopInfoController">
+<AnchorPane fx:id="shopInfoMiddlePane" prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: LIGHTBLUE;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.shopInfoController">
    <children>
       <Label alignment="CENTER" layoutX="24.0" layoutY="24.0" style="&#10;" text="Shop Information" textAlignment="CENTER" wrapText="false">
          <font>

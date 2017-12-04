@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.*;
+import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -21,6 +22,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -129,7 +131,7 @@ public class mainController {
         upperDetailsLabel.setText("Enter your name");
     }
     @FXML private void setUpperDetailsLabelDefault(){
-        upperDetailsLabel.setText("Select one of the options to the left in order to get more details about it.");
+       upperDetailsLabel.setText("Select one of the options to the left in order to get more details about it.");
     }
 
     // .............................CHANGE LISTENERS......................................................
@@ -196,8 +198,8 @@ public class mainController {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 if (newValue.intValue() > oldValue.intValue()) {
-                         if (mileageText.getText().length() >= 7) {
-                             mileageText.setText(mileageText.getText().substring(0, 7));
+                         if (mileageText.getText().length() >= 6) {
+                             mileageText.setText(mileageText.getText().substring(0, 6));
                     }
                 }
             }
@@ -205,25 +207,22 @@ public class mainController {
         mileageText.textProperty().addListener(new ChangeListener<String>() {
                 @Override
                 public void changed (ObservableValue < ? extends String > observable, String oldValue, String newValue){
-                /*if (!newValue.matches("\\d*")) {
-                    mileageText.setText(newValue.replaceAll("[^\\d]", ""));
-                }*/
-                if (newValue != "") {
-                    if (newValue != oldValue) {
-                        try {
-                            Number formatted = NumberFormat.getNumberInstance(Locale.US).parse(newValue);
-                            System.out.println(formatted);
-                            mileageText.setText(String.format("%,d", formatted));
-                        } catch (ParseException e) {
-                        } catch (IllegalArgumentException s) {
-                        }
-                    }
-                }
+                    if (!newValue.matches("\\d*"))
+                        mileageText.setText(newValue.replaceAll("[^\\d]", ""));
+                     /* if (newValue != "") {
+                            if (newValue != oldValue) {
+                                try {
+                                     Number formatted = NumberFormat.getNumberInstance(Locale.US).parse(newValue);
+                                     mileageText.setText(String.format("%,d", formatted));
+                                } catch (ParseException e) {
+                                }
+                            }
+                        }*/
             }
-
         });
         //.......................UpperDetailLabelFocusLost...............................
     }
+
     public void setFocusLostListeners(Node node){
         node.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
