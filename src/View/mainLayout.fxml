@@ -10,6 +10,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.Slider?>
@@ -113,304 +114,520 @@
                   </Button>
                   <Separator layoutY="299.0" prefHeight="19.0" prefWidth="113.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
                   <Separator layoutX="5.0" layoutY="573.0" AnchorPane.bottomAnchor="173.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="573.0" />
-                  <ImageView blendMode="MULTIPLY" fitHeight="257.0" fitWidth="484.0" layoutX="2.0" layoutY="312.0">
-                     <image>
-                        <Image url="@../images/4_cycle_schem_640px-M.gif" />
-                     </image>
-                  </ImageView>
           </children>
         </AnchorPane>
-      <AnchorPane id="Content" fx:id="middlePane" minWidth="750.0" prefHeight="881.0" prefWidth="793.0">
-        <children>
-                  <GridPane alignment="CENTER" layoutX="222.0" layoutY="216.0" maxHeight="514.0" maxWidth="772.0" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="192.0">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
-                     </rowConstraints>
-                     <children>
-                        <ImageView fitHeight="257.0" fitWidth="386.0" opacity="0.43" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+            <ScrollPane fitToWidth="true" minViewportWidth="800.0" prefHeight="2000.0" prefWidth="813.0">
+               <content>
+            <AnchorPane id="Content" fx:id="middlePane" minWidth="750.0" prefHeight="2000.0">
+              <children>
+                        <GridPane alignment="CENTER" layoutX="222.0" layoutY="216.0" maxHeight="514.0" maxWidth="772.0" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="192.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
+                           </rowConstraints>
+                           <children>
+                              <ImageView fitHeight="257.0" fitWidth="386.0" opacity="0.43" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                 <image>
+                                    <Image url="@../images/engine.jpg" />
+                                 </image>
+                                 <effect>
+                                    <Blend mode="SCREEN" opacity="0.71" />
+                                 </effect>
+                              </ImageView>
+                           </children>
+                        </GridPane>
+                <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Vehicle Information" textAlignment="CENTER" textFill="$x2" wrapText="false" />
+                        <AnchorPane focusTraversable="true" layoutY="72.0" maxHeight="-Infinity" prefHeight="150.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                           <children>
+                              <GridPane fx:id="upperGrid1" alignment="TOP_CENTER" hgap="12.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <TextField fx:id="yearText" maxWidth="60.0" onMouseClicked="#setUpperDetailsLabelYear" prefHeight="25.0" prefWidth="60.0" promptText="Year" />
+                                    <ColorPicker fx:id="colorPick" maxHeight="105.0" onMouseClicked="#setUpperDetailsLabelColor" prefHeight="25.0" prefWidth="105.0" GridPane.columnIndex="1" />
+                                    <ChoiceBox fx:id="makeChoiceBox" maxWidth="164.0" onMouseClicked="#setUpperDetailsLabelMake" prefHeight="25.0" prefWidth="164.0" GridPane.columnIndex="2" />
+                                    <ChoiceBox fx:id="modelChoiceBox" maxWidth="182.0" onMouseClicked="#setUpperDetailsLabelModel" prefHeight="25.0" prefWidth="182.0" GridPane.columnIndex="3" />
+                                    <DatePicker fx:id="inspectionDate" maxWidth="135.0" onMouseClicked="#setUpperDetailsLabelDate" prefHeight="25.0" prefWidth="135.0" GridPane.columnIndex="4" />
+                                 </children>
+                              </GridPane>
+                              <GridPane fx:id="upperGrid2" alignment="CENTER" hgap="27.0" layoutY="47.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <TextField fx:id="vinText" alignment="CENTER" maxWidth="236.0" onMouseClicked="#setUpperDetailsLabelVin" prefHeight="25.0" prefWidth="236.0" promptText="Vin Number" snapToPixel="false" />
+                                    <TextField fx:id="mileageText" alignment="CENTER" maxWidth="156.0" onMouseClicked="#setUpperDetailsLabelMileage" prefWidth="156.0" promptText="Mileage" GridPane.columnIndex="1" />
+                                    <TextField fx:id="techNameText" alignment="CENTER" maxWidth="248.0" onMouseClicked="#setUpperDetailsLabelTechnician" prefHeight="25.0" prefWidth="248.0" promptText="Technician Name" GridPane.columnIndex="2" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                        <Label alignment="CENTER" layoutX="12.0" layoutY="190.0" style="&#10;" text="Tire Depth" textAlignment="CENTER" wrapText="false">
+                           <font>
+                              <Font size="18.0" fx:id="x11" />
+                           </font>
+                           <textFill>
+                              <Color blue="0.624" green="0.624" red="0.624" fx:id="x21" />
+                           </textFill>
+                        </Label>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="93.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/engine.jpg" />
+                              <Image url="@../images/Tire_Inspection.jpg" />
                            </image>
-                           <effect>
-                              <Blend mode="SCREEN" opacity="0.71" />
-                           </effect>
                         </ImageView>
-                     </children>
-                  </GridPane>
-          <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Vehicle Information" textAlignment="CENTER" textFill="$x2" wrapText="false" />
-                  <AnchorPane focusTraversable="true" layoutX="-2.0" layoutY="67.0" maxHeight="-Infinity" prefHeight="150.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                     <children>
-                        <GridPane fx:id="upperGrid1" alignment="TOP_CENTER" hgap="12.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0">
-                           <columnConstraints>
-                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
-                           </rowConstraints>
-                           <children>
-                              <TextField fx:id="yearText" maxWidth="60.0" onMouseClicked="#setUpperDetailsLabelYear" prefHeight="25.0" prefWidth="60.0" promptText="Year" />
-                              <ColorPicker fx:id="colorPick" maxHeight="105.0" onMouseClicked="#setUpperDetailsLabelColor" prefHeight="25.0" prefWidth="105.0" GridPane.columnIndex="1" />
-                              <ChoiceBox fx:id="makeChoiceBox" maxWidth="164.0" onMouseClicked="#setUpperDetailsLabelMake" prefHeight="25.0" prefWidth="164.0" GridPane.columnIndex="2" />
-                              <ChoiceBox fx:id="modelChoiceBox" maxWidth="182.0" onMouseClicked="#setUpperDetailsLabelModel" prefHeight="25.0" prefWidth="182.0" GridPane.columnIndex="3" />
-                              <DatePicker fx:id="inspectionDate" maxWidth="135.0" onMouseClicked="#setUpperDetailsLabelDate" prefHeight="25.0" prefWidth="135.0" GridPane.columnIndex="4" />
-                           </children>
-                        </GridPane>
-                        <GridPane fx:id="upperGrid2" alignment="CENTER" hgap="27.0" layoutY="47.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0">
-                           <columnConstraints>
-                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
-                           <children>
-                              <TextField fx:id="vinText" alignment="CENTER" maxWidth="236.0" onMouseClicked="#setUpperDetailsLabelVin" prefHeight="25.0" prefWidth="236.0" promptText="Vin Number" snapToPixel="false" />
-                              <TextField fx:id="mileageText" alignment="CENTER" maxWidth="156.0" onMouseClicked="#setUpperDetailsLabelMileage" prefWidth="156.0" promptText="Mileage" GridPane.columnIndex="1" />
-                              <TextField fx:id="techNameText" alignment="CENTER" maxWidth="248.0" onMouseClicked="#setUpperDetailsLabelTechnician" prefHeight="25.0" prefWidth="248.0" promptText="Technician Name" GridPane.columnIndex="2" />
-                           </children>
-                        </GridPane>
-                     </children>
-                  </AnchorPane>
-                  <Label alignment="CENTER" layoutX="12.0" layoutY="190.0" style="&#10;" text="Tire Depth" textAlignment="CENTER" wrapText="false">
-                     <font>
-                        <Font size="18.0" fx:id="x11" />
-                     </font>
-                     <textFill>
-                        <Color blue="0.624" green="0.624" red="0.624" fx:id="x21" />
-                     </textFill>
-                  </Label>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="93.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/Tire_Inspection.jpg" />
-                     </image>
-                  </ImageView>
-                  <TextField alignment="CENTER" layoutX="12.0" layoutY="248.0" prefHeight="25.0" prefWidth="75.0" promptText="Left Front" />
-                  <TextField alignment="CENTER" layoutX="12.0" layoutY="318.0" prefHeight="25.0" prefWidth="75.0" promptText="Left Rear" />
-                  <TextField alignment="CENTER" layoutX="212.0" layoutY="248.0" prefHeight="25.0" prefWidth="75.0" promptText="Right Front" />
-                  <TextField alignment="CENTER" layoutX="212.0" layoutY="318.0" prefHeight="25.0" prefWidth="75.0" promptText="Right Rear" />
-                  <TextField alignment="CENTER" layoutX="112.0" layoutY="390.0" prefHeight="25.0" prefWidth="75.0" promptText="Spare" />
-                  <Text fill="#686868" layoutX="32.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/32nds" wrappingWidth="50.0">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Text>
-                  <Text fill="#686868" layoutX="30.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/32nds" wrappingWidth="50.0">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Text>
-                  <Text fill="#686868" layoutX="228.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/32nds" wrappingWidth="50.0">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Text>
-                  <Text fill="#686868" layoutX="227.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/32nds" wrappingWidth="50.0">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Text>
-                  <Label alignment="CENTER" layoutX="15.0" layoutY="462.0" style="&#10;" text="Drivetrain" textAlignment="CENTER" wrapText="false">
-                     <font>
-                        <Font size="18.0" fx:id="x111" />
-                     </font>
-                     <textFill>
-                        <Color blue="0.624" green="0.624" red="0.624" fx:id="x211" />
-                     </textFill>
-                  </Label>
-                  <Text fill="#686868" layoutX="129.0" layoutY="433.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/32nds" wrappingWidth="50.0">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Text>
-                  <Label alignment="CENTER" layoutX="565.0" layoutY="190.0" style="&#10;" text="Tire Pressure" textAlignment="CENTER" wrapText="false" AnchorPane.rightAnchor="12.0">
-                     <font>
-                        <Font size="18.0" fx:id="x112" />
-                     </font>
-                     <textFill>
-                        <Color blue="0.624" green="0.624" red="0.624" fx:id="x212" />
-                     </textFill>
-                  </Label>
-                  <Separator layoutX="12.0" layoutY="219.0" prefHeight="3.0" prefWidth="360.0" AnchorPane.leftAnchor="12.0" />
-                  <Separator layoutX="520.0" layoutY="218.0" prefWidth="360.0" AnchorPane.rightAnchor="12.0" />
-                  <TextField alignment="CENTER" layoutX="472.0" layoutY="248.0" prefHeight="25.0" prefWidth="75.0" promptText="Left Front" AnchorPane.rightAnchor="173.0" />
-                  <TextField alignment="CENTER" layoutX="472.0" layoutY="282.0" prefHeight="25.0" prefWidth="75.0" promptText="Right Front" AnchorPane.rightAnchor="173.0" />
-                  <TextField alignment="CENTER" layoutX="472.0" layoutY="316.0" prefHeight="25.0" prefWidth="75.0" promptText="Left Rear" AnchorPane.rightAnchor="173.0" />
-                  <TextField alignment="CENTER" layoutX="472.0" layoutY="350.0" prefHeight="25.0" prefWidth="75.0" promptText="Right Rear" AnchorPane.rightAnchor="173.0" />
-                  <TextField alignment="CENTER" layoutX="472.0" layoutY="384.0" prefHeight="25.0" prefWidth="75.0" promptText="Spare" AnchorPane.rightAnchor="173.0" />
-                  <Label layoutX="554.0" layoutY="251.0" text="PSI" textFill="#686868" AnchorPane.rightAnchor="149.0" />
-                  <Label layoutX="554.0" layoutY="285.0" text="PSI" textFill="#686868" AnchorPane.rightAnchor="149.0" />
-                  <Label layoutX="554.0" layoutY="319.0" text="PSI" textFill="#686868" AnchorPane.rightAnchor="149.0" />
-                  <Label layoutX="554.0" layoutY="353.0" text="PSI" textFill="#686868" AnchorPane.rightAnchor="149.0" />
-                  <Label layoutX="554.0" layoutY="387.0" text="PSI" textFill="#686868" AnchorPane.rightAnchor="149.0" />
-                  <Separator layoutX="470.0" layoutY="277.0" prefWidth="250.0" AnchorPane.rightAnchor="12.0" />
-                  <Separator layoutX="470.0" layoutY="311.0" prefWidth="250.0" AnchorPane.rightAnchor="12.0" />
-                  <Separator layoutX="480.0" layoutY="345.0" prefWidth="250.0" AnchorPane.rightAnchor="12.0" />
-                  <Separator layoutX="470.0" layoutY="379.0" prefWidth="250.0" AnchorPane.rightAnchor="12.0" />
-                  <ToggleButton fx:id="flateTireToggle" layoutX="606.0" layoutY="247.0" mnemonicParsing="false" prefWidth="90.0" stylesheets="@../StyleSheets/MainLayoutStyles.css" text="Flat Tire" AnchorPane.rightAnchor="25.0">
+                        <TextField alignment="CENTER" layoutX="12.0" layoutY="248.0" prefHeight="25.0" prefWidth="75.0" promptText="Left Front" />
+                        <TextField alignment="CENTER" layoutX="12.0" layoutY="318.0" prefHeight="25.0" prefWidth="75.0" promptText="Left Rear" />
+                        <TextField alignment="CENTER" layoutX="212.0" layoutY="248.0" prefHeight="25.0" prefWidth="75.0" promptText="Right Front" />
+                        <TextField alignment="CENTER" layoutX="212.0" layoutY="318.0" prefHeight="25.0" prefWidth="75.0" promptText="Right Rear" />
+                        <TextField alignment="CENTER" layoutX="112.0" layoutY="390.0" prefHeight="25.0" prefWidth="75.0" promptText="Spare" />
+                        <Text fill="#686868" layoutX="32.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/32nds" wrappingWidth="50.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#686868" layoutX="30.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/32nds" wrappingWidth="50.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#686868" layoutX="228.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/32nds" wrappingWidth="50.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#686868" layoutX="227.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/32nds" wrappingWidth="50.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <Label alignment="CENTER" layoutX="15.0" layoutY="462.0" style="&#10;" text="Drivetrain" textAlignment="CENTER" wrapText="false">
+                           <font>
+                              <Font size="18.0" fx:id="x111" />
+                           </font>
+                           <textFill>
+                              <Color blue="0.624" green="0.624" red="0.624" fx:id="x211" />
+                           </textFill>
+                        </Label>
+                        <Text fill="#686868" layoutX="129.0" layoutY="433.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/32nds" wrappingWidth="50.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <Label alignment="CENTER" layoutX="565.0" layoutY="190.0" style="&#10;" text="Tire Pressure" textAlignment="CENTER" wrapText="false" AnchorPane.rightAnchor="12.0">
+                           <font>
+                              <Font size="18.0" fx:id="x112" />
+                           </font>
+                           <textFill>
+                              <Color blue="0.624" green="0.624" red="0.624" fx:id="x212" />
+                           </textFill>
+                        </Label>
+                        <Separator layoutX="12.0" layoutY="219.0" prefHeight="3.0" prefWidth="360.0" AnchorPane.leftAnchor="12.0" />
+                        <Separator layoutX="520.0" layoutY="218.0" prefWidth="360.0" AnchorPane.rightAnchor="12.0" />
+                        <TextField alignment="CENTER" layoutX="472.0" layoutY="248.0" prefHeight="25.0" prefWidth="75.0" promptText="Left Front" AnchorPane.rightAnchor="173.0" />
+                        <TextField alignment="CENTER" layoutX="472.0" layoutY="282.0" prefHeight="25.0" prefWidth="75.0" promptText="Right Front" AnchorPane.rightAnchor="173.0" />
+                        <TextField alignment="CENTER" layoutX="472.0" layoutY="316.0" prefHeight="25.0" prefWidth="75.0" promptText="Left Rear" AnchorPane.rightAnchor="173.0" />
+                        <TextField alignment="CENTER" layoutX="472.0" layoutY="350.0" prefHeight="25.0" prefWidth="75.0" promptText="Right Rear" AnchorPane.rightAnchor="173.0" />
+                        <TextField alignment="CENTER" layoutX="472.0" layoutY="384.0" prefHeight="25.0" prefWidth="75.0" promptText="Spare" AnchorPane.rightAnchor="173.0" />
+                        <Label layoutX="554.0" layoutY="251.0" text="PSI" textFill="#686868" AnchorPane.rightAnchor="149.0" />
+                        <Label layoutX="554.0" layoutY="285.0" text="PSI" textFill="#686868" AnchorPane.rightAnchor="149.0" />
+                        <Label layoutX="554.0" layoutY="319.0" text="PSI" textFill="#686868" AnchorPane.rightAnchor="149.0" />
+                        <Label layoutX="554.0" layoutY="353.0" text="PSI" textFill="#686868" AnchorPane.rightAnchor="149.0" />
+                        <Label layoutX="554.0" layoutY="387.0" text="PSI" textFill="#686868" AnchorPane.rightAnchor="149.0" />
+                        <Separator layoutX="470.0" layoutY="277.0" prefWidth="250.0" AnchorPane.rightAnchor="12.0" />
+                        <Separator layoutX="470.0" layoutY="311.0" prefWidth="250.0" AnchorPane.rightAnchor="12.0" />
+                        <Separator layoutX="480.0" layoutY="345.0" prefWidth="250.0" AnchorPane.rightAnchor="12.0" />
+                        <Separator layoutX="470.0" layoutY="379.0" prefWidth="250.0" AnchorPane.rightAnchor="12.0" />
+                        <ToggleButton fx:id="flateTireToggle" layoutX="606.0" layoutY="247.0" mnemonicParsing="false" prefWidth="90.0" stylesheets="@../StyleSheets/MainLayoutStyles.css" text="Flat Tire" AnchorPane.rightAnchor="25.0">
                   </ToggleButton>
-                  <ToggleButton layoutX="606.0" layoutY="281.0" mnemonicParsing="false" prefWidth="90.0" stylesheets="@../StyleSheets/MainLayoutStyles.css" text="Flat Tire" AnchorPane.rightAnchor="25.0" />
-                  <ToggleButton layoutX="606.0" layoutY="316.0" mnemonicParsing="false" prefWidth="90.0" stylesheets="@../StyleSheets/MainLayoutStyles.css" text="Flat Tire" AnchorPane.rightAnchor="25.0" />
-                  <ToggleButton layoutX="606.0" layoutY="349.0" mnemonicParsing="false" prefWidth="90.0" stylesheets="@../StyleSheets/MainLayoutStyles.css" text="Flat Tire" AnchorPane.rightAnchor="25.0" />
-                  <ToggleButton layoutX="606.0" layoutY="383.0" mnemonicParsing="false" prefWidth="90.0" stylesheets="@../StyleSheets/MainLayoutStyles.css" text="Flat Tire" AnchorPane.rightAnchor="25.0" />
-                  <Separator layoutY="42.0" prefHeight="3.0" prefWidth="360.0" AnchorPane.leftAnchor="12.0" />
-                  <Label alignment="CENTER" layoutX="478.0" layoutY="462.0" style="&#10;" text="Oil Leaks" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false" AnchorPane.rightAnchor="12.0">
-                     <font>
-                        <Font size="16.0" fx:id="x1111" />
-                     </font>
-                  </Label>
-                  <Separator layoutX="449.0" layoutY="492.0" prefWidth="360.0" AnchorPane.rightAnchor="12.0" />
-                  <AnchorPane layoutX="360.0" layoutY="490.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="490.0">
-                     <children>
-                        <Separator orientation="VERTICAL" prefHeight="206.0" prefWidth="3.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="4.0" />
-                     </children>
-                  </AnchorPane>
-                  <Separator layoutX="12.0" layoutY="493.0" prefHeight="3.0" prefWidth="360.0" AnchorPane.leftAnchor="12.0" />
-                  <Slider fx:id="valveCoverSlider" blockIncrement="1.0" layoutX="595.0" layoutY="504.0" majorTickUnit="5.0" max="10.0" minorTickCount="1" onMouseClicked="#setValveCoverSlider" onMouseDragged="#setValveCoverSlider" showTickLabels="true" showTickMarks="true" snapToTicks="true" AnchorPane.rightAnchor="12.0">
-                     <effect>
-                        <Glow level="0.0" />
-                     </effect>
-                  </Slider>
-                  <Slider fx:id="oilPanSlider" layoutX="598.0" layoutY="548.0" majorTickUnit="5.0" max="10.0" minorTickCount="1" onMouseClicked="#setOilPanSlider" onMouseDragged="#setOilPanSlider" showTickLabels="true" showTickMarks="true" snapToTicks="true" AnchorPane.rightAnchor="12.0" />
-                  <Slider fx:id="timingCoverSlider" layoutX="598.0" layoutY="592.0" majorTickUnit="5.0" max="10.0" minorTickCount="1" onMouseClicked="#setTimingCoverSlider" onMouseDragged="#setTimingCoverSlider" showTickLabels="true" showTickMarks="true" snapToTicks="true" AnchorPane.rightAnchor="12.0" />
-                  <Slider fx:id="filterHousingSlider" layoutX="598.0" layoutY="636.0" majorTickUnit="5.0" max="10.0" minorTickCount="1" onMouseClicked="#setFilterHousingSlider" onMouseDragged="#setFilterHousingSlider" showTickLabels="true" showTickMarks="true" snapToTicks="true" AnchorPane.rightAnchor="12.0" />
-                  <Slider fx:id="oilCoolerSlider" layoutX="598.0" layoutY="680.0" majorTickUnit="5.0" max="10.0" minorTickCount="1" onMouseClicked="#setOilCoolerSlider" onMouseDragged="#setOilCoolerSlider" showTickLabels="true" showTickMarks="true" snapToTicks="true" AnchorPane.rightAnchor="12.0" />
-                  <Label fx:id="valveCoverLabel" layoutX="591.0" layoutY="503.0" text=" None" textAlignment="RIGHT" textFill="#00ae1a" AnchorPane.rightAnchor="162.0">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="oilPanLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="595.0" layoutY="546.0" text="None" textAlignment="CENTER" textFill="#00ae1a" AnchorPane.rightAnchor="162.0">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="timingCoverLabel" layoutX="595.0" layoutY="590.0" text="None" textFill="#00ae1a" AnchorPane.rightAnchor="162.0">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="filterHousingLabel" layoutX="595.0" layoutY="634.0" text="None" textFill="#00ae1a" AnchorPane.rightAnchor="162.0">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="oilCoolerLabel" layoutX="595.0" layoutY="678.0" text="None" textFill="#00ae1a" AnchorPane.rightAnchor="162.0">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="450.0" layoutY="502.0" prefWidth="120.0" text="Valve Cover :" textFill="#9f9f9f" AnchorPane.rightAnchor="223.0">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="450.0" layoutY="545.0" prefWidth="120.0" text="Oil Pan :" textFill="#9f9f9f" AnchorPane.rightAnchor="223.0">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="450.0" layoutY="589.0" prefWidth="120.0" text="Timing Cover :" textFill="#9f9f9f" AnchorPane.rightAnchor="223.0">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="450.0" layoutY="631.0" prefWidth="120.0" text="Filter Housing :" textFill="#9f9f9f" AnchorPane.rightAnchor="223.0">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="450.0" layoutY="677.0" prefWidth="120.0" text="Oil Cooler :" textFill="#9f9f9f" AnchorPane.rightAnchor="223.0">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <HBox alignment="CENTER" layoutX="119.0" layoutY="509.0" prefWidth="130.0" spacing="15.0" AnchorPane.leftAnchor="119.0">
-                     <children>
-                        <ToggleButton fx:id="goodToggle" mnemonicParsing="false" onAction="#setOilConditionBad" stylesheets="@../StyleSheets/goodCondtionToggleStyles.css" text="Good">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="oilCondition" />
-                           </toggleGroup>
-                        </ToggleButton>
-                        <ToggleButton fx:id="oilConditionBad" mnemonicParsing="false" onAction="#setOilConditionBad" prefWidth="46.0" stylesheets="@../StyleSheets/badcondtionToggleStyles.css" text="Bad" toggleGroup="$oilCondition" />
-                     </children>
-                     <padding>
-                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                     </padding>
-                  </HBox>
-                  <Label layoutX="12.0" layoutY="511.0" prefWidth="120.0" text="Oil Condtion :" textFill="#9f9f9f">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="oilConditionText" layoutX="249.0" layoutY="511.0" prefWidth="120.0" promptText="miles to oil change" visible="false" />
-                  <Label layoutX="12.0" layoutY="548.0" prefWidth="120.0" text="Belts :" textFill="#9f9f9f">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <HBox alignment="CENTER" layoutX="119.0" layoutY="548.0" prefWidth="130.0" spacing="15.0">
-                     <children>
-                        <ToggleButton fx:id="goodToggle" mnemonicParsing="false" onAction="#setBeltsBad" stylesheets="@../StyleSheets/goodCondtionToggleStyles.css" text="Good">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="belts" />
-                           </toggleGroup>
-                        </ToggleButton>
-                        <ToggleButton fx:id="beltsBad" mnemonicParsing="false" onAction="#setBeltsBad" prefWidth="46.0" stylesheets="@../StyleSheets/badcondtionToggleStyles.css" text="Bad" toggleGroup="$belts" />
-                     </children>
-                     <padding>
-                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                     </padding>
-                  </HBox>
-                  <Label layoutX="12.0" layoutY="585.0" prefWidth="120.0" text="Air Filter :" textFill="#9f9f9f">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="beltsText" layoutX="249.0" layoutY="550.0" prefWidth="120.0" promptText="A/C or main belt?" visible="false" />
-                  <HBox alignment="CENTER" layoutX="119.0" layoutY="585.0" prefWidth="130.0" spacing="15.0">
-                     <children>
-                        <ToggleButton fx:id="goodToggle" mnemonicParsing="false" onAction="#setAirFilterBad" stylesheets="@../StyleSheets/goodCondtionToggleStyles.css" text="Good">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="airfilter" />
-                           </toggleGroup>
-                        </ToggleButton>
-                        <ToggleButton fx:id="airFilterBad" mnemonicParsing="false" onAction="#setAirFilterBad" prefWidth="46.0" stylesheets="@../StyleSheets/badcondtionToggleStyles.css" text="Bad" toggleGroup="$airfilter" />
-                     </children>
-                     <padding>
-                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                     </padding>
-                  </HBox>
-                  <TextField fx:id="airFilterText" layoutX="249.0" layoutY="588.0" prefWidth="120.0" promptText="next oil change?" visible="false" />
-                  <Label layoutX="12.0" layoutY="622.0" prefWidth="120.0" text="Trans Fluid :" textFill="#9f9f9f">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <HBox alignment="CENTER" layoutX="119.0" layoutY="622.0" prefWidth="130.0" spacing="15.0">
-                     <children>
-                        <ToggleButton fx:id="goodToggle" mnemonicParsing="false" onAction="#setTransFluidBad" stylesheets="@../StyleSheets/goodCondtionToggleStyles.css" text="Good">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="transfluid" />
-                           </toggleGroup>
-                        </ToggleButton>
-                        <ToggleButton fx:id="transFluidBad" mnemonicParsing="false" onAction="#setTransFluidBad" prefWidth="46.0" stylesheets="@../StyleSheets/badcondtionToggleStyles.css" text="Bad" toggleGroup="$transfluid" />
-                     </children>
-                     <padding>
-                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                     </padding>
-                  </HBox>
-                  <TextField fx:id="transFluidText" layoutX="249.0" layoutY="624.0" prefWidth="120.0" promptText="distance?" visible="false" />
-                  <TextArea fx:id="drivetrainTextArea" layoutX="380.0" layoutY="511.0" maxWidth="200.0" prefHeight="200.0" prefWidth="147.0" promptText="Drivetrain comments" visible="false" />
-        </children>
-      </AnchorPane>
+                        <ToggleButton layoutX="606.0" layoutY="281.0" mnemonicParsing="false" prefWidth="90.0" stylesheets="@../StyleSheets/MainLayoutStyles.css" text="Flat Tire" AnchorPane.rightAnchor="25.0" />
+                        <ToggleButton layoutX="606.0" layoutY="316.0" mnemonicParsing="false" prefWidth="90.0" stylesheets="@../StyleSheets/MainLayoutStyles.css" text="Flat Tire" AnchorPane.rightAnchor="25.0" />
+                        <ToggleButton layoutX="606.0" layoutY="349.0" mnemonicParsing="false" prefWidth="90.0" stylesheets="@../StyleSheets/MainLayoutStyles.css" text="Flat Tire" AnchorPane.rightAnchor="25.0" />
+                        <ToggleButton layoutX="606.0" layoutY="383.0" mnemonicParsing="false" prefWidth="90.0" stylesheets="@../StyleSheets/MainLayoutStyles.css" text="Flat Tire" AnchorPane.rightAnchor="25.0" />
+                        <Separator layoutY="42.0" prefHeight="3.0" prefWidth="360.0" AnchorPane.leftAnchor="12.0" />
+                        <Label alignment="CENTER" layoutX="478.0" layoutY="462.0" style="&#10;" text="Oil Leaks" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false" AnchorPane.rightAnchor="12.0">
+                           <font>
+                              <Font size="16.0" fx:id="x1111" />
+                           </font>
+                        </Label>
+                        <Separator layoutX="449.0" layoutY="492.0" prefWidth="360.0" AnchorPane.rightAnchor="12.0" />
+                        <AnchorPane layoutX="360.0" layoutY="490.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="490.0">
+                           <children>
+                              <Separator orientation="VERTICAL" prefHeight="206.0" prefWidth="3.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="4.0" />
+                           </children>
+                        </AnchorPane>
+                        <Separator layoutX="12.0" layoutY="493.0" prefHeight="3.0" prefWidth="360.0" AnchorPane.leftAnchor="12.0" />
+                        <Slider fx:id="valveCoverSlider" blockIncrement="1.0" layoutX="595.0" layoutY="504.0" majorTickUnit="5.0" max="10.0" minorTickCount="1" onMouseClicked="#setValveCoverSlider" onMouseDragged="#setValveCoverSlider" showTickLabels="true" showTickMarks="true" snapToTicks="true" AnchorPane.rightAnchor="12.0">
+                           <effect>
+                              <Glow level="0.0" />
+                           </effect>
+                        </Slider>
+                        <Slider fx:id="oilPanSlider" layoutX="598.0" layoutY="548.0" majorTickUnit="5.0" max="10.0" minorTickCount="1" onMouseClicked="#setOilPanSlider" onMouseDragged="#setOilPanSlider" showTickLabels="true" showTickMarks="true" snapToTicks="true" AnchorPane.rightAnchor="12.0" />
+                        <Slider fx:id="timingCoverSlider" layoutX="598.0" layoutY="592.0" majorTickUnit="5.0" max="10.0" minorTickCount="1" onMouseClicked="#setTimingCoverSlider" onMouseDragged="#setTimingCoverSlider" showTickLabels="true" showTickMarks="true" snapToTicks="true" AnchorPane.rightAnchor="12.0" />
+                        <Slider fx:id="filterHousingSlider" layoutX="598.0" layoutY="636.0" majorTickUnit="5.0" max="10.0" minorTickCount="1" onMouseClicked="#setFilterHousingSlider" onMouseDragged="#setFilterHousingSlider" showTickLabels="true" showTickMarks="true" snapToTicks="true" AnchorPane.rightAnchor="12.0" />
+                        <Slider fx:id="oilCoolerSlider" layoutX="598.0" layoutY="678.0" majorTickUnit="5.0" max="10.0" minorTickCount="1" onMouseClicked="#setOilCoolerSlider" onMouseDragged="#setOilCoolerSlider" showTickLabels="true" showTickMarks="true" snapToTicks="true" AnchorPane.rightAnchor="12.0" />
+                        <Label fx:id="valveCoverLabel" layoutX="595.0" layoutY="503.0" text=" None" textAlignment="RIGHT" textFill="#00ae1a" AnchorPane.rightAnchor="162.0">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="oilPanLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="595.0" layoutY="546.0" text="None" textAlignment="CENTER" textFill="#00ae1a" AnchorPane.rightAnchor="162.0">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="timingCoverLabel" layoutX="595.0" layoutY="590.0" text="None" textFill="#00ae1a" AnchorPane.rightAnchor="162.0">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="filterHousingLabel" layoutX="595.0" layoutY="634.0" text="None" textFill="#00ae1a" AnchorPane.rightAnchor="162.0">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="oilCoolerLabel" layoutX="595.0" layoutY="676.0" text="None" textFill="#00ae1a" AnchorPane.rightAnchor="162.0">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="450.0" layoutY="502.0" prefWidth="120.0" text="Valve Cover :" textFill="#9f9f9f" AnchorPane.rightAnchor="223.0">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="450.0" layoutY="545.0" prefWidth="120.0" text="Oil Pan :" textFill="#9f9f9f" AnchorPane.rightAnchor="223.0">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="450.0" layoutY="589.0" prefWidth="120.0" text="Timing Cover :" textFill="#9f9f9f" AnchorPane.rightAnchor="223.0">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="450.0" layoutY="631.0" prefWidth="120.0" text="Filter Housing :" textFill="#9f9f9f" AnchorPane.rightAnchor="223.0">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="450.0" layoutY="673.0" prefWidth="120.0" text="Oil Cooler :" textFill="#9f9f9f" AnchorPane.rightAnchor="223.0">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" layoutX="119.0" layoutY="509.0" prefWidth="130.0" spacing="15.0" AnchorPane.leftAnchor="119.0">
+                           <children>
+                              <ToggleButton fx:id="goodToggle" mnemonicParsing="false" onAction="#setOilConditionBad" stylesheets="@../StyleSheets/goodCondtionToggleStyles.css" text="Good">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="oilCondition" />
+                                 </toggleGroup>
+                              </ToggleButton>
+                              <ToggleButton fx:id="oilConditionBad" mnemonicParsing="false" onAction="#setOilConditionBad" prefWidth="46.0" stylesheets="@../StyleSheets/badcondtionToggleStyles.css" text="Bad" toggleGroup="$oilCondition" />
+                           </children>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                        </HBox>
+                        <Label layoutX="12.0" layoutY="511.0" prefWidth="120.0" text="Oil Condtion :" textFill="#9f9f9f">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="oilConditionText" layoutX="249.0" layoutY="511.0" prefWidth="120.0" promptText="miles to oil change" visible="false" />
+                        <Label layoutX="12.0" layoutY="548.0" prefWidth="120.0" text="Belts :" textFill="#9f9f9f">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" layoutX="119.0" layoutY="548.0" prefWidth="130.0" spacing="15.0">
+                           <children>
+                              <ToggleButton fx:id="goodToggle" mnemonicParsing="false" onAction="#setBeltsBad" stylesheets="@../StyleSheets/goodCondtionToggleStyles.css" text="Good">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="belts" />
+                                 </toggleGroup>
+                              </ToggleButton>
+                              <ToggleButton fx:id="beltsBad" mnemonicParsing="false" onAction="#setBeltsBad" prefWidth="46.0" stylesheets="@../StyleSheets/badcondtionToggleStyles.css" text="Bad" toggleGroup="$belts" />
+                           </children>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                        </HBox>
+                        <Label layoutX="12.0" layoutY="585.0" prefWidth="120.0" text="Air Filter :" textFill="#9f9f9f">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="beltsText" layoutX="249.0" layoutY="550.0" prefWidth="120.0" promptText="A/C or main belt?" visible="false" />
+                        <HBox alignment="CENTER" layoutX="119.0" layoutY="585.0" prefWidth="130.0" spacing="15.0">
+                           <children>
+                              <ToggleButton fx:id="goodToggle" mnemonicParsing="false" onAction="#setAirFilterBad" stylesheets="@../StyleSheets/goodCondtionToggleStyles.css" text="Good">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="airfilter" />
+                                 </toggleGroup>
+                              </ToggleButton>
+                              <ToggleButton fx:id="airFilterBad" mnemonicParsing="false" onAction="#setAirFilterBad" prefWidth="46.0" stylesheets="@../StyleSheets/badcondtionToggleStyles.css" text="Bad" toggleGroup="$airfilter" />
+                           </children>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                        </HBox>
+                        <TextField fx:id="airFilterText" layoutX="249.0" layoutY="588.0" prefWidth="120.0" promptText="next oil change?" visible="false" />
+                        <Label layoutX="12.0" layoutY="622.0" prefWidth="120.0" text="Trans Fluid :" textFill="#9f9f9f">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" layoutX="119.0" layoutY="622.0" prefWidth="130.0" spacing="15.0">
+                           <children>
+                              <ToggleButton fx:id="goodToggle" mnemonicParsing="false" onAction="#setTransFluidBad" stylesheets="@../StyleSheets/goodCondtionToggleStyles.css" text="Good">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="transfluid" />
+                                 </toggleGroup>
+                              </ToggleButton>
+                              <ToggleButton fx:id="transFluidBad" mnemonicParsing="false" onAction="#setTransFluidBad" prefWidth="46.0" stylesheets="@../StyleSheets/badcondtionToggleStyles.css" text="Bad" toggleGroup="$transfluid" />
+                           </children>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                        </HBox>
+                        <TextField fx:id="transFluidText" layoutX="249.0" layoutY="624.0" prefWidth="120.0" promptText="distance?" visible="false" />
+                        <TextArea fx:id="drivetrainTextArea" layoutX="380.0" layoutY="511.0" maxWidth="200.0" prefHeight="200.0" prefWidth="147.0" promptText="Drivetrain comments" visible="false" />
+                        <Label layoutX="450.0" layoutY="715.0" prefWidth="120.0" text="Oil Cooler :" textFill="#9f9f9f" AnchorPane.rightAnchor="223.0">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Slider fx:id="oilCoolerSlider1" layoutX="598.0" layoutY="720.0" majorTickUnit="5.0" max="10.0" minorTickCount="1" onMouseClicked="#setOilCoolerSlider" onMouseDragged="#setOilCoolerSlider" showTickLabels="true" showTickMarks="true" snapToTicks="true" AnchorPane.rightAnchor="12.0" />
+                        <Label fx:id="oilCoolerLabel1" layoutX="595.0" layoutY="718.0" text="None" textFill="#00ae1a" AnchorPane.rightAnchor="162.0">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="12.0" layoutY="659.0" prefWidth="120.0" text="Trans Fluid :" textFill="#9f9f9f">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" layoutX="119.0" layoutY="659.0" prefWidth="130.0" spacing="15.0">
+                           <children>
+                              <ToggleButton fx:id="goodToggle1" mnemonicParsing="false" onAction="#setTransFluidBad" stylesheets="@../StyleSheets/goodCondtionToggleStyles.css" text="Good">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="transfluid1" />
+                                 </toggleGroup>
+                              </ToggleButton>
+                              <ToggleButton fx:id="transFluidBad1" mnemonicParsing="false" onAction="#setTransFluidBad" prefWidth="46.0" stylesheets="@../StyleSheets/badcondtionToggleStyles.css" text="Bad" toggleGroup="$transfluid1" />
+                           </children>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                        </HBox>
+                        <Label layoutX="12.0" layoutY="696.0" prefWidth="120.0" text="Trans Fluid :" textFill="#9f9f9f">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" layoutX="119.0" layoutY="696.0" prefWidth="130.0" spacing="15.0">
+                           <children>
+                              <ToggleButton fx:id="goodToggle11" mnemonicParsing="false" onAction="#setTransFluidBad" stylesheets="@../StyleSheets/goodCondtionToggleStyles.css" text="Good">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="transfluid11" />
+                                 </toggleGroup>
+                              </ToggleButton>
+                              <ToggleButton fx:id="transFluidBad11" mnemonicParsing="false" onAction="#setTransFluidBad" prefWidth="46.0" stylesheets="@../StyleSheets/badcondtionToggleStyles.css" text="Bad" toggleGroup="$transfluid11" />
+                           </children>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                        </HBox>
+                        <Label layoutX="12.0" layoutY="733.0" prefWidth="120.0" text="Trans Fluid :" textFill="#9f9f9f">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" layoutX="119.0" layoutY="733.0" prefWidth="130.0" spacing="15.0">
+                           <children>
+                              <ToggleButton fx:id="goodToggle12" mnemonicParsing="false" onAction="#setTransFluidBad" stylesheets="@../StyleSheets/goodCondtionToggleStyles.css" text="Good">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="transfluid12" />
+                                 </toggleGroup>
+                              </ToggleButton>
+                              <ToggleButton fx:id="transFluidBad12" mnemonicParsing="false" onAction="#setTransFluidBad" prefWidth="46.0" stylesheets="@../StyleSheets/badcondtionToggleStyles.css" text="Bad" toggleGroup="$transfluid12" />
+                           </children>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                        </HBox>
+                        <Label layoutX="12.0" layoutY="770.0" prefWidth="120.0" text="Trans Fluid :" textFill="#9f9f9f">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" layoutX="119.0" layoutY="770.0" prefWidth="130.0" spacing="15.0">
+                           <children>
+                              <ToggleButton fx:id="goodToggle121" mnemonicParsing="false" onAction="#setTransFluidBad" stylesheets="@../StyleSheets/goodCondtionToggleStyles.css" text="Good">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="transfluid121" />
+                                 </toggleGroup>
+                              </ToggleButton>
+                              <ToggleButton fx:id="transFluidBad121" mnemonicParsing="false" onAction="#setTransFluidBad" prefWidth="46.0" stylesheets="@../StyleSheets/badcondtionToggleStyles.css" text="Bad" toggleGroup="$transfluid121" />
+                           </children>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                        </HBox>
+                        <Label layoutX="12.0" layoutY="807.0" prefWidth="120.0" text="Trans Fluid :" textFill="#9f9f9f">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" layoutX="119.0" layoutY="807.0" prefWidth="130.0" spacing="15.0">
+                           <children>
+                              <ToggleButton fx:id="goodToggle122" mnemonicParsing="false" onAction="#setTransFluidBad" stylesheets="@../StyleSheets/goodCondtionToggleStyles.css" text="Good">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="transfluid122" />
+                                 </toggleGroup>
+                              </ToggleButton>
+                              <ToggleButton fx:id="transFluidBad122" mnemonicParsing="false" onAction="#setTransFluidBad" prefWidth="46.0" stylesheets="@../StyleSheets/badcondtionToggleStyles.css" text="Bad" toggleGroup="$transfluid122" />
+                           </children>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                        </HBox>
+                        <Slider fx:id="oilCoolerSlider2" layoutX="606.0" layoutY="767.0" majorTickUnit="5.0" max="10.0" minorTickCount="1" onMouseClicked="#setOilCoolerSlider" onMouseDragged="#setOilCoolerSlider" showTickLabels="true" showTickMarks="true" snapToTicks="true" AnchorPane.rightAnchor="12.0" />
+                        <Label fx:id="oilCoolerLabel2" layoutX="603.0" layoutY="765.0" text="None" textFill="#00ae1a" AnchorPane.rightAnchor="162.0">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="458.0" layoutY="757.0" prefWidth="120.0" text="Oil Cooler :" textFill="#9f9f9f" AnchorPane.rightAnchor="223.0">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="458.0" layoutY="799.0" prefWidth="120.0" text="Oil Cooler :" textFill="#9f9f9f" AnchorPane.rightAnchor="223.0">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Slider fx:id="oilCoolerSlider11" layoutX="606.0" layoutY="809.0" majorTickUnit="5.0" max="10.0" minorTickCount="1" onMouseClicked="#setOilCoolerSlider" onMouseDragged="#setOilCoolerSlider" showTickLabels="true" showTickMarks="true" snapToTicks="true" AnchorPane.rightAnchor="12.0" />
+                        <Label fx:id="oilCoolerLabel11" layoutX="603.0" layoutY="807.0" text="None" textFill="#00ae1a" AnchorPane.rightAnchor="162.0">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="12.0" layoutY="844.0" prefWidth="120.0" text="Trans Fluid :" textFill="#9f9f9f">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" layoutX="119.0" layoutY="844.0" prefWidth="130.0" spacing="15.0">
+                           <children>
+                              <ToggleButton fx:id="goodToggle13" mnemonicParsing="false" onAction="#setTransFluidBad" stylesheets="@../StyleSheets/goodCondtionToggleStyles.css" text="Good">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="transfluid13" />
+                                 </toggleGroup>
+                              </ToggleButton>
+                              <ToggleButton fx:id="transFluidBad13" mnemonicParsing="false" onAction="#setTransFluidBad" prefWidth="46.0" stylesheets="@../StyleSheets/badcondtionToggleStyles.css" text="Bad" toggleGroup="$transfluid13" />
+                           </children>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                        </HBox>
+                        <Label layoutX="12.0" layoutY="881.0" prefWidth="120.0" text="Trans Fluid :" textFill="#9f9f9f">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" layoutX="119.0" layoutY="881.0" prefWidth="130.0" spacing="15.0">
+                           <children>
+                              <ToggleButton fx:id="goodToggle111" mnemonicParsing="false" onAction="#setTransFluidBad" stylesheets="@../StyleSheets/goodCondtionToggleStyles.css" text="Good">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="transfluid111" />
+                                 </toggleGroup>
+                              </ToggleButton>
+                              <ToggleButton fx:id="transFluidBad111" mnemonicParsing="false" onAction="#setTransFluidBad" prefWidth="46.0" stylesheets="@../StyleSheets/badcondtionToggleStyles.css" text="Bad" toggleGroup="$transfluid111" />
+                           </children>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                        </HBox>
+                        <Label layoutX="12.0" layoutY="918.0" prefWidth="120.0" text="Trans Fluid :" textFill="#9f9f9f">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" layoutX="119.0" layoutY="918.0" prefWidth="130.0" spacing="15.0">
+                           <children>
+                              <ToggleButton fx:id="goodToggle123" mnemonicParsing="false" onAction="#setTransFluidBad" stylesheets="@../StyleSheets/goodCondtionToggleStyles.css" text="Good">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="transfluid123" />
+                                 </toggleGroup>
+                              </ToggleButton>
+                              <ToggleButton fx:id="transFluidBad123" mnemonicParsing="false" onAction="#setTransFluidBad" prefWidth="46.0" stylesheets="@../StyleSheets/badcondtionToggleStyles.css" text="Bad" toggleGroup="$transfluid123" />
+                           </children>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                        </HBox>
+                        <Label layoutX="12.0" layoutY="955.0" prefWidth="120.0" text="Trans Fluid :" textFill="#9f9f9f">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" layoutX="119.0" layoutY="955.0" prefWidth="130.0" spacing="15.0">
+                           <children>
+                              <ToggleButton fx:id="goodToggle1211" mnemonicParsing="false" onAction="#setTransFluidBad" stylesheets="@../StyleSheets/goodCondtionToggleStyles.css" text="Good">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="transfluid1211" />
+                                 </toggleGroup>
+                              </ToggleButton>
+                              <ToggleButton fx:id="transFluidBad1211" mnemonicParsing="false" onAction="#setTransFluidBad" prefWidth="46.0" stylesheets="@../StyleSheets/badcondtionToggleStyles.css" text="Bad" toggleGroup="$transfluid1211" />
+                           </children>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                        </HBox>
+                        <Label layoutX="12.0" layoutY="992.0" prefWidth="120.0" text="Trans Fluid :" textFill="#9f9f9f">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" layoutX="119.0" layoutY="992.0" prefWidth="130.0" spacing="15.0">
+                           <children>
+                              <ToggleButton fx:id="goodToggle1221" mnemonicParsing="false" onAction="#setTransFluidBad" stylesheets="@../StyleSheets/goodCondtionToggleStyles.css" text="Good">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="transfluid1221" />
+                                 </toggleGroup>
+                              </ToggleButton>
+                              <ToggleButton fx:id="transFluidBad1221" mnemonicParsing="false" onAction="#setTransFluidBad" prefWidth="46.0" stylesheets="@../StyleSheets/badcondtionToggleStyles.css" text="Bad" toggleGroup="$transfluid1221" />
+                           </children>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                        </HBox>
+                        <TextField fx:id="oilConditionText1" layoutX="259.0" layoutY="662.0" prefWidth="120.0" promptText="miles to oil change" visible="false" />
+                        <TextField fx:id="beltsText1" layoutX="259.0" layoutY="701.0" prefWidth="120.0" promptText="A/C or main belt?" visible="false" />
+                        <TextField fx:id="airFilterText1" layoutX="259.0" layoutY="739.0" prefWidth="120.0" promptText="next oil change?" visible="false" />
+                        <TextField fx:id="transFluidText1" layoutX="259.0" layoutY="775.0" prefWidth="120.0" promptText="distance?" visible="false" />
+              </children>
+            </AnchorPane>
+               </content>
+            </ScrollPane>
           <AnchorPane minHeight="0.0" minWidth="85.0" prefHeight="55.0" prefWidth="150.0">
                <children>
             <Label alignment="CENTER" font="$x1" layoutX="15.0" layoutY="17.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="$x2" wrapText="false" />
